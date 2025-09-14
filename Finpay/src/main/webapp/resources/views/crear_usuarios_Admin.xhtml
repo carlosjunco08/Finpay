@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <body>
+        
+
+        <ui:composition template="./admin_Template.xhtml">
+
+            <ui:define name="content" id="contenidod">
+                <f:view>
+                    <h:form id="forms">
+                        <table class="table_admin">
+
+                            <thead>
+
+                                <tr> <th>REGISTRO DE USUARIOS</th></tr>
+
+
+                            </thead>
+                            <tbody>
+                                <tr><td>NOMBRES</td><td>APELLIDOS</td><td>IDENTIFICACION</td></tr>
+                                <tr> <td><h:inputText  id="Nombres" value="#{usuariosController.user.nombres}" required="true" styleClass="form-control"  /></td>
+                                    <td><h:inputText  id="Apellidos" value="#{usuariosController.user.apellidos}"  required="true" styleClass="form-control"  /></td>
+                                    <td><h:inputText  id="Identificacion" value="#{usuariosController.user.identificacion}" required="true" styleClass="form-control"  /></td>
+                                </tr>
+                                
+                                
+                                <tr> <td>CORREO</td><td>TELEFONO</td> <td>DIRECCION</td></tr>
+                                <tr><td><h:inputText  id="Email" value="#{usuariosController.user.correo}" required="true" styleClass="form-control"  /></td>
+                                      <td><h:inputText  id="Telefono" value="#{usuariosController.user.telefono}"  required="true" styleClass="form-control"  /></td>
+                                      <td><h:inputText  id="Direccion"  value="#{usuariosController.user.direccion}" required="true" styleClass="form-control"  /></td>
+                                </tr>
+                              
+                                <tr> <td>CONTRASEÑA</td><td>EDAD</td> <td>ESTADO</td></tr>
+                                <tr><td><h:inputText  id="Contraseña"  value="#{usuariosController.user.contraseña}" required="true" styleClass="form-control"  /></td>
+                                    <td><h:inputText  id="Edad" value="#{usuariosController.user.edad}" required="true"  styleClass="form-control"  /></td>
+                                    <td><h:selectOneMenu value="#{usuariosController.est.estadoRol}" styleClass="form-select">
+                                            <f:selectItems value="#{usuariosController.listarEstados()}" />
+                                        </h:selectOneMenu></td>
+                                </tr>
+                                
+                                <tr> <td>PAIS</td><td>ROL ID</td></tr>
+                                <tr><td><h:selectOneMenu value="#{usuariosController.user.paisId.idpais}" id="Pais" styleClass="form-select">
+                                            <f:selectItems value="#{usuariosController.listarPaises()}" />
+                                        </h:selectOneMenu></td>
+                                      <td><h:selectOneMenu id="Rol" value="#{usuariosController.user.rolId.idrol}" styleClass="form-select">
+                                            <f:selectItems value="#{usuariosController.listarRolAdmin()}" />
+                                        </h:selectOneMenu></td>
+                                </tr>
+                               
+                                <tr><td>
+                                        <h:messages id="mensajes" infoClass="color: red;" globalOnly="true"   />    
+                                        <h:commandButton value="REGISTRAR"  action="#{usuariosController.crearUsuario()}"  rendered="#{usuariosController.user.identificacion == null}" class="btn btn-primary" />
+                                        <h:commandButton value="EDITAR"  action="#{usuariosController.editarStepTwo()}" onclick="return confirm ('¿Esta Seguro de  Editar este Usuario?')"  rendered="#{usuariosController.user.identificacion != null}" class="btn btn-primary" />
+                                        <h:commandButton value="CANCELAR"  action="#" class="btn btn-primary"   type="reset"/></td></tr>
+
+                            </tbody>
+                        </table>
+
+                    </h:form>
+                </f:view>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./admin_Template.xhtml">
+
+            <ui:define name="content">
+                <!-- Campo oculto con los datos de backend en formato JSON -->
+                <div class="graficContent">
+                    <h:form id="form">
+                        <h:inputHidden id="usuariosPorRolData" value="#{graficasController.jsonUsuariosPorRol}" />
+                    </h:form>
+                    <!-- Gráfico de Usuarios por Rol -->
+                    <div class="dashboard-card graph-card">
+                        <div class="card-title"><p>Usuarios por Rol</p></div>
+                        <canvas id="usuariosPorRolChart" width="400" height="300"></canvas>
+                    </div>
+
+                    <h:form id="formPais">
+                        <h:inputHidden id="usuariosPorPaisData" value="#{graficasController.jsonUsuariosPorPais}" />
+                    </h:form>
+
+                    <div class="dashboard-card graph-card">
+                        <div class="card-title"><p>Usuarios por País</p></div>
+                        <canvas id="usuariosPorPaisChart" width="300" height="250"></canvas>
+                    </div>
+
+                </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

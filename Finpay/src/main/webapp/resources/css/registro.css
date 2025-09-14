@@ -1,0 +1,219 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body, html {
+    font-family: Arial, sans-serif;
+   height: 100%;
+}
+
+header {
+    top: 0;
+    left: 0;
+    position: fixed;
+    justify-content: center;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    padding: 10px 20px;
+    background: linear-gradient(rgb(0, 139, 139), #000d);
+    transition: 0.7s;
+    z-index: 1000;
+}
+
+
+
+
+.logo img {
+    width: 160px;
+    height: 60px;
+    margin: 1px 20px 5px 20px;
+    filter: drop-shadow(-20px 0 20px #000);
+}
+
+header .navlinks {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 20px 0px;
+    padding: 0;
+}
+
+.navlinks li {
+    list-style: none;
+}
+
+.navlinks a {
+    position: relative;
+    margin: 0 40px;
+    text-decoration: none;
+    font-weight: 600;
+    color: white;
+    letter-spacing: 2px;
+    transition: 0.6s;
+    text-transform: none;
+}
+
+.navlinks a:hover {
+    cursor: pointer;
+    color: #efb810;
+}
+
+.name{
+
+    max-width: 99%;
+    height: 900px;
+    margin: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: #00474f solid 5px;
+    background: linear-gradient( #000d, rgb(4, 83, 83));
+    border-radius: 6px;
+    overflow: hidden;
+    
+}
+
+.formulario{
+
+    
+    width: 600px;
+    padding: 20px;
+    background: linear-gradient(90deg, rgb(0, 139, 139), #000d, #957208, rgb(0, 139, 139), #000d);
+    border-radius: 6px;
+    background-size: 400% 400%;
+    animation: backAnimation 11s ease infinite;
+}
+
+@keyframes backAnimation{
+
+    0%{
+        background-position: 0% 50%;
+    }
+
+    50%{
+        background-position: 100% 50%;
+
+    }
+    100%{
+        background-position: 0% 50%;
+    }
+}
+
+.mb-3{
+
+    display: flex;
+    flex-direction: column;
+    margin: 15px;
+}
+
+.form-control{
+
+    margin-top: 10px;
+    width: 500px;
+    height: 30px;
+    font-size: 15px;
+    border-radius: 6px;
+}
+
+.form-label{
+
+    color: #fff;
+}
+
+.form-select{
+
+    width: 350px;
+    height: 30px;
+    font-size: 15px;
+}
+
+.form-check-label{
+
+    color: #fff ;
+}
+
+.btn{
+
+    margin-top: 15px;
+    height: 40px;
+    width: 100px;
+    color: #fff;
+    font-size: 15px;
+    background: #00474f;
+    border: none;
+    border-radius: 6px;
+    margin-left: 20px;
+}
+
+.btn:hover{
+
+    cursor: pointer;
+    background:#389908 ;
+}
+/* Pie de página */
+footer {
+    background: #00474f;
+    padding: 30px;
+    color: rgb(221, 177, 20);
+    margin-top: 50px; /* Asegura que el pie se vea debajo del contenido */
+}
+
+footer .sec {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+footer .navlink {
+    list-style: none;
+    margin-right: 30px;
+}
+
+footer .navlink a {
+    text-decoration: none;
+    color: white;
+}
+
+footer .navlink a:hover {
+    text-decoration: underline;
+}
+
+footer .pan img {
+    width: 150px;
+    height: auto;
+    margin-top: 20px;
+}
+
+.contenido h3 {
+    text-align: center; /* Centra el texto del h3 */
+}
+
+h2 {
+    text-align: center;  /* Centra el texto dentro del h2 */
+}
+.navlink img:hover{
+
+    transform: translateY(-10%);
+
+}
+.navlink  .face:hover{
+
+    filter: invert(41%) sepia(27%) saturate(4360%) hue-rotate(184deg) brightness(104%) contrast(98%);
+}
+.navlink  .Inst:hover{
+
+    filter: invert(24%) sepia(90%) saturate(7467%) hue-rotate(357deg) brightness(112%) contrast(93%);
+}
+.navlink  .twt:hover{
+
+    filter: invert(41%) sepia(27%) saturate(4360%) hue-rotate(184deg) brightness(104%) contrast(98%);
+}
+.navlink  .what:hover{
+
+    filter: invert(39%) sepia(66%) saturate(1771%) hue-rotate(91deg) brightness(93%) contrast(105%);
+}
+

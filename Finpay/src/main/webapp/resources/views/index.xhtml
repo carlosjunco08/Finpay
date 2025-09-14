@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    
+
+    <body >
+
+        <ui:composition template="./GeneralTemplate.xhtml">
+
+            <ui:define name="content">
+                <h1>Listado de Usuarios</h1>
+
+                <table border="1"  id="t-all" class="jsf-data-table display nowrap" width="100%"  >
+                    <thead>
+                        <tr>
+                            <th>Rol ID</th>
+                            <th>Usuario ID</th>
+                            <th>Nombres</th>
+                            <th>Apellidos</th>
+                            <th>Identificacion</th>
+                            <th>Email</th>
+                            <th>Telefono</th>
+                            <th>Direccion</th>
+                            <th>Edad</th>
+                            <th>Contraseña</th>
+                            <th>Pais</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ui:repeat value="#{usuariosController.listarUsuarios()}"  var="item">
+                            <tr>
+                                <td>#{item.usuarioPK.rolIdrol}</td>
+                                <td>#{item.usuarioPK.idusuario}</td>
+                                <td>#{item.nombres}</td>
+                                <td>#{item.apellidos}</td>
+                                <td>#{item.identificacion}</td>
+                                <td>#{item.correo}</td>
+                                <td>#{item.telefono}</td>
+                                <td>#{item.direccion}</td>
+                                <td>#{item.edad}</td>
+                                <td>#{item.contraseña}</td>
+                                <td>#{item.pais.nombrePais}</td>
+                            </tr>
+                        </ui:repeat>
+                    </tbody>
+                </table>
+                <script>
+                        $(document).ready(function () {
+                            $('.jsf-data-table').DataTable({
+                                dom: 'Bfrtip',
+                                "language": {
+                                    "url": "https://cdn.datatables.net/plug-ins/1.11.3/i18n/es_es.json"
+                                            },
+                                            "pageLength": 50,
+                                            buttons: [
+                                                'copy', 'csv', 'excel', 'pdf', 'print'
+                                            ]
+                                        });
+                
+                                    });
+                </script>
+
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

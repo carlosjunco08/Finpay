@@ -1,0 +1,27 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 22/08/2025, 6:28:35 p. m.
+    Author     : Jhon Deibys Torres
+*/
+
+.graficContent{
+    
+    display: flex;
+    border: solid #017171 5px;
+   padding: 20px;
+    height: 450px;
+}
+
+.dashboard-card{
+    margin-right: 30px;
+}
+
+
+.card-title p{
+    
+    color: #017171;
+    font-weight: 600;
+}

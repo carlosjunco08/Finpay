@@ -1,0 +1,252 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <h:outputStylesheet name="/css/default.css"/>
+        <h:outputStylesheet name="/css/suscripcion.css"/>
+        <h:outputStylesheet name="/css/cssLayout.css"/>
+        <h:outputStylesheet name="/css/template_Admin.css"/>
+        <h:outputStylesheet name="/css/crear_U_Admin.css"/>
+        <h:outputStylesheet name="/css/grafics.css"/>
+        <h:outputScript name="alertas.js" library="js" target="body" />
+        <h:outputScript name="graficasJS.js" library="js" target="body" />
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <title>Basic Finance</title>
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" />
+        <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css" />
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+        <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+            crossorigin="anonymous"
+            />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
+
+    </h:head>
+
+    <h:body>
+
+        <div id="top">
+
+            <button type="button" class="btns btn-primary" onclick="toggleLeft()">
+                &#9776;
+            </button>
+            <figure>
+                <h:graphicImage library="images" name="Logo.png"/>
+            </figure>
+            <a href="inicio_Admin.xhtml">Usuarios Registrados</a>
+            <a href="">Suscripciones</a>
+            <a href="grafic.xhtml">Reportes</a>
+            <a href="suscripciones_Template.xhtml">Notificaciones</a>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCerrarSesion">
+                Cerrar Sesión
+            </button>
+
+        </div>
+
+        <div class="layout-wrapper">
+            <div id="left" class="d-none">
+                <aside id="sidebar" class="sidebar">
+                    <div class="h-100">
+                        <div class="sidebar-logo">
+                            <figure class="logo">
+                                <h:graphicImage library="images" name="Logo.png"/>
+                            </figure>
+                            <a href="#">#{login.usuario}</a>
+                        </div>
+                        <ul class="sidebar-nav">
+                            <li class="sidebar-item">
+                                <a href="#" class="sidebar-link">Perfil</a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="#" class="sidebar-link collapsed">
+                                    <i class="fa-regular fa-file-lines pe-2"></i>
+                                    Paginas
+                                </a>
+                                <ul id="pages" class="sidebar-dropdown list-unstyled collapse">
+                                    <li class="sidebar-item"><a href="#" class="sidebar-link">Analytics</a></li>
+                                    <li class="sidebar-item"><a href="#" class="sidebar-link">Ecommerce</a></li>
+                                    <li class="sidebar-item"><a href="#" class="sidebar-link">Crypto</a></li>
+                                </ul>
+                            </li>
+                            <li class="sidebar-item">
+                                <!-- ⛔️ Esta parte se mantiene igual como pediste -->
+                                <a
+                                    href="#"
+                                    class="sidebar-link collapsed"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#dashboard"
+                                    aria-expanded="false"
+                                    aria-controls="dashboard"
+                                    >
+                                    <i class="fa-solid fa-sliders pe-2"></i>
+                                    Dashboard
+                                </a>
+                                <ul id="dashboard" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                                    <li class="sidebar-item"><a href="#" class="sidebar-link">Analisis Dashboard Usuarios</a></li>
+                                    <li class="sidebar-item"><a href="#" class="sidebar-link">Analisis Dashboard Suscripciones</a></li>
+                                </ul>
+                            </li>
+                            <li class="sidebar-item">
+                                <a
+                                    href="#"
+                                    class="sidebar-link collapsed"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#auth"
+                                    aria-expanded="false"
+                                    aria-controls="auth"
+                                    >
+                                    <i class="fa-regular fa-user pe-2"></i>
+                                    Registrar
+                                </a>
+                                <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                                    <h:form><li class="sidebar-item"><a href="#" class="sidebar-link">Usuarios</a></li></h:form>
+                                    <li class="sidebar-item"><a href="#" class="sidebar-link">Paises</a></li>
+                                    <li class="sidebar-item"><a href="#" class="sidebar-link">Roles</a></li>
+                                </ul>
+                            </li>
+                            <li class="sidebar-item">
+                                <a
+                                    href="#"
+                                    class="sidebar-link collapsed"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#multi"
+                                    aria-expanded="false"
+                                    aria-controls="multi"
+                                    >
+                                    <i class="fa-solid fa-share-nodes pe-2"></i>
+                                    Settings
+                                </a>
+                                <ul id="multi" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                                    <li class="sidebar-item">
+                                        <a
+                                            href="#"
+                                            class="sidebar-link collapsed"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target="#multi-two"
+                                            aria-expanded="false"
+                                            aria-controls="multi-two"
+                                            >
+                                            Modificar y Salir
+                                        </a>
+                                        <ul id="multi-two" class="sidebar-dropdown list-unstyled collapse">
+                                            <li class="sidebar-item"><a href="actualizar.php" class="sidebar-link">Modificar Datos</a></li>
+                                            <li class="sidebar-item"><a href="logout.php" class="sidebar-link">Cerrar Sesion</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+
+            <!-- ✅ Parte clave para que sea un TEMPLATE Facelets -->
+            <div id="content" class="left_content">
+                <ui:insert name="content">Content</ui:insert>
+            </div>
+        </div>
+
+        <div id="bottom">
+            <footer class="foot">
+                <section class="sec">
+                    <ul class="navlink">
+                        <label class="Lista">Productos</label>
+                        <li>
+                            <a href="404.php"
+                               >¿Poque Basic Finance?</a
+                            >
+                        </li>
+                        <li>
+                            <a href="500.php"
+                               >Aplicacion Movil</a
+                            >
+                        </li>
+                    </ul>
+
+                    <ul class="navlink">
+                        <label class="Lista">Recursos</label>
+                        <li><a href="#">Consejos Sobre como Ahorrar</a></li>
+                        <li><a href="#">Articulos e informacion sobre el Mercado</a></li>
+                        <li><a href="#">Consejos Sobre Finanzas</a></li>
+                    </ul>
+
+                    <ul class="navlink">
+                        <label class="Lista">Empresa </label>
+                        <li><a href="#">Nuestra Historia</a></li>
+                        <li><a href="#">Accesibilidad</a></li>
+                        <li><a href="#">Eventos</a></li>
+                        <li><a href="#">Desarrolladores</a></li>
+                    </ul>
+
+                    <ul class="navlink">
+                        <label class="Lista">Ayuda</label>
+                        <li><a href="#">Contactanos</a></li>
+                        <li><a href="#">Convenios</a></li>
+                        <li><a href="#">Centro de Ayuda</a></li>
+                        <li><a href="#">Servicio</a></li>
+                    </ul>
+                    <ul class="navlink">
+                        <label class="Lista">Redes</label>
+                        <li><h:graphicImage library="images" name="Face.svg" alt="Icono" class="face" /><a href="https://web.facebook.com/">Facebook</a></li>
+                        <li><h:graphicImage library="images" name="inst.svg" alt="Icono" class="Inst" /><a href="https://www.instagram.com/">Instagram</a></li>
+                        <li><h:graphicImage library="images" name="X.svg" alt="Icono" class="twt" /><a href="https://x.com/">X</a></li>
+                        <li><h:graphicImage library="images" name="what.svg" alt="Icono" class="what" /><a href="https://www.whatsapp.com/?lang=es_LA">Whatsapp</a></li>
+                    </ul>
+                </section>
+            </footer>
+        </div>
+        <div class="modal fade" id="modalCerrarSesion" tabindex="-1" aria-labelledby="cerrarSesionLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header bg-warning">
+                        <h5 class="modal-title" id="cerrarSesionLabel">Confirmar Cierre de Sesión</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        ¿Está seguro que desea cerrar sesión?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-cancelar" data-bs-dismiss="modal">Cancelar</button>
+
+                        <!-- Botón que realmente hace la acción -->
+                        <h:form>
+                            <h:commandButton value="Cerrar Sesión" 
+                                             action="#{login.cerrarSesion()}"
+                                             styleClass="btn btn-success"/>
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            function toggleLeft() {
+                const panel = document.getElementById("left");
+                panel.classList.toggle("d-none");
+            }
+        </script>
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+            crossorigin="anonymous">
+        </script>
+    </h:body>
+</html>

@@ -1,0 +1,148 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet  name="newLogin.css"  library="css"/>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <h:outputScript name="validarForms.js" library="js" target="body" />
+        <title>Login</title>
+    </h:head>
+    <h:body>
+
+        <!-- Encabezado -->
+        <header id="header"  class="header">
+            <figure id="logo" class="logo">
+                <img src="resources/images/Logo.png" alt="Logo Empresa" />
+            </figure>
+            <nav>
+                <ul id="navlinks" class="navlinks">
+                    <li><a href="#">Quienes Somos</a></li>
+                    <li><a href="#">Aplicacion </a></li>
+                    <li><a href="#">Servicios</a></li>
+                    <li><a href="#">Contactanos</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div id="container" class="container">
+            <!-- Tarjeta de presentación -->
+            <div  id="card" class="card">
+                <figure>
+                    <img src="resources/images/NewQ.jpg" alt="" />
+                </figure>
+                <div  id="contenido"  class="contenido">
+                    <h3>Quiénes Somos</h3>
+                    <p>En Basic Finance guiamos a las personas en la gestión de sus finanzas personales.<br /><br /></p>
+                    <p>Nuestra aplicación intuitiva combina herramientas y recursos educativos para ayudarte a crear presupuestos, gestionar impuestos y alcanzar tus metas financieras.<br /><br /></p>
+                    <p>¡Tu bienestar financiero es nuestra prioridad!</p>
+                </div>
+            </div>
+
+            <!-- Formulario de login -->
+            <div  id="box   " class="box">
+                <div  id="borderLine" class="borderLine"></div>
+                <h:form id="Formulario" class="Formulario">
+                    <figure id="ima" class="ima">
+                        <img src="resources/images/Logo.png" alt="Joven" />
+                    </figure>
+
+                    <h2>INICIO DE SESIÓN</h2>
+
+                    <div class="username">
+                        <h:inputText id="iTextUsuario" value="#{login.usuario}" required="true"
+                                     class="user" requiredMessage="El campo usuario es obligatorio"/>
+                        <h:message for="iTextUsuario" style="color: red"/>
+                        <label>Nombres</label>
+                    </div>
+                     <div class="username">
+                         <h:inputText id="iTextNameUsuario" value="#{login.nombre_usuario}" required="true"
+                                     class="user" requiredMessage="El campo usuario es obligatorio"/>
+                        <h:message for="iTextManeUsuario" style="color: red"/>
+                        <label>Nombre de Usuario</label>
+                    </div>
+                    <div class="username">
+                        <h:inputSecret id="iTextPassword" value="#{login.contrasenna}" required="true"
+                                       styleClass="user" requiredMessage="El campo contraseña es obligatorio"/>
+                        <h:message for="iTextPassword" style="color: red"/>
+                        <label>Contraseña</label>
+                    </div>
+
+                    <h:messages globalOnly="true" style="color: red" />
+
+                    <h:commandButton styleClass="btn" value="Ingresar" action="#{login.iniciarSesion()}" />
+
+                    <div id="Login" class="Login">
+                        <div id="forgot-password" class="forgot-password">
+                            ¿Olvidó su <a href="#">contraseña?</a>
+                        </div>
+                        <div id="register-link" class="register-link">
+                            Quiero hacer el <a href="registro.xhtml">registro</a>
+                        </div>
+                    </div>
+                </h:form>
+                <h:panelGroup  rendered="#{not empty facesContext.maximumSeverity and facesContext.maximumSeverity.ordinal ge 2}">
+                    <script>
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Acceso denegado',
+                            text: 'Usuario, nombre de usuario y/o contraseña incorrecta.',
+                            confirmButtonColor: '#efb810'
+                        });
+                    </script>
+                </h:panelGroup>
+            </div>
+        </div>
+        
+
+        <!-- Pie de página -->
+        <footer  id="foot" class="foot">
+            <section  id="sec" class="sec">
+                <ul  id="navlink" class="navlink">
+                    <label  id="List" class="List">Productos<br /><br /></label>
+                    <li><a href="404.xhtml">¿Por qué Basic Finance?</a></li>
+                </ul>
+                <ul  id="navlink" class="navlink">
+                    <label  id="List" class="List">Recursos<br /><br /></label>
+                    <li><a href="#">Consejos Sobre cómo Ahorrar</a></li>
+                    <li><a href="#">Artículos e información sobre el Mercado</a></li>
+                    <li><a href="#">Consejos Sobre Finanzas</a></li>
+                </ul>
+                <ul  id="navlink" class="navlink">
+                    <label  id="List" class="List">Empresa<br /><br /></label>
+                    <li><a href="#">Nuestra Historia</a></li>
+                    <li><a href="#">Accesibilidad</a></li>
+                    <li><a href="#">Eventos</a></li>
+                    <li><a href="#">Desarrolladores</a></li>
+                </ul>
+                <ul  id="navlink" class="navlink">
+                    <label  id="List" class="List">Ayuda<br /><br /></label>
+                    <li><a href="#">Convenios</a></li>
+                    <li><a href="#">Centro de Ayuda</a></li>
+                </ul>
+                <ul  id="navlink" class="navlink"> 
+                    <label  id="Lista" class="Lista">Redes </label>   
+
+                    <li>
+                        <h:graphicImage library="images" name="Face.svg" alt="Icono"  id="face" class="face" />
+                        <a href="https://web.facebook.com/">Facebook</a>
+                    </li> 
+                    <li>
+                        <h:graphicImage library="images" name="inst.svg" alt="Icono"  id="Inst" class="Inst" />
+                        <a href="https://www.instagram.com/">Instagram</a>
+                    </li> 
+                    <li>
+                        <h:graphicImage library="images" name="X.svg" alt="Icono"  id="twt" class="twt" />
+                        <a href="https://x.com/">X</a>
+                    </li> 
+                    <li>
+                        <h:graphicImage library="images" name="what.svg" alt="Icono"  id="what" class="what" />
+                        <a href="https://www.whatsapp.com/?lang=es_LA">Whatsapp</a>
+                    </li>  
+                </ul>
+            </section>
+        </footer>
+   
+    </h:body>
+</html>

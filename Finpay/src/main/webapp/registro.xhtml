@@ -1,0 +1,180 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <h:outputStylesheet  name="registro.css"  library="css"/>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <h:outputScript name="registro.js" library="js" target="body" />
+
+        <title>Registro Usuario</title>
+    </h:head>
+    <h:body>
+
+        <!-- Radios ocultos de navegación interna -->
+        <input type="radio" id="inicio" name="contenido" checked="checked" />
+        <input type="radio" id="login" name="contenido" />
+
+        <!-- Encabezado -->
+        <header class="header">
+            <figure class="logo">
+                <img src="resources/images/Logo.png" alt="Logo Empresa" />
+            </figure>
+            <nav>
+                <ul class="navlinks">
+                    <li><a href="#">Quienes Somos</a></li>
+                    <li><a href="#">AplicacionN</a></li>
+                    <li><a href="#">Servicios</a></li>
+                    <li><a href="#">Contactanos</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Contenido principal -->
+        <main class="name">
+
+            <h:form id="registroForm" class="formulario">
+                <div class="mb-3">
+                    <label for="documento" class="form-label">Documento</label>
+                    <h:inputText id="documento" value="#{usuariosController.user.identificacion}" required="true" styleClass="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombres</label>
+                    <h:inputText id="nombre" value="#{usuariosController.user.nombres}" required="true" styleClass="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="apellidos" class="form-label">Apellidos</label>
+                    <h:inputText id="apellidos" value="#{usuariosController.user.apellidos}" required="true" styleClass="form-control" />
+                </div>
+                 <div class="mb-3">
+                    <label for="nombreUser" class="form-label">Nombre de Usuario</label>
+                    <h:inputText id="nombreUser" value="#{usuariosController.user.nombreUsuario}" required="true" styleClass="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">Correo electrónico</label>
+                    <h:inputText id="email" value="#{usuariosController.user.correo}" required="true" styleClass="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="telefono" class="form-label">Teléfono</label>
+                    <h:inputText id="telefono" value="#{usuariosController.user.telefono}" required="true" styleClass="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="direccion" class="form-label">Dirección</label>
+                    <h:inputText id="direccion" value="#{usuariosController.user.direccion}" required="true" styleClass="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="password" class="form-label">Contraseña</label>
+                    <h:inputSecret id="password" value="#{usuariosController.user.contraseña}" required="true" styleClass="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="Edad" class="form-label">Edad</label>
+                    <h:inputText id="fechaNacimiento" value="#{usuariosController.user.edad}" required="true" styleClass="form-control">
+                    </h:inputText>
+                </div>
+                   <div class="mb-3">
+                    <label for="pais" class="form-label">País</label>
+                    <h:selectOneMenu id="pais" value="#{usuariosController.pais.idpais}" styleClass="form-select">
+                        <f:selectItems value="#{usuariosController.listarPaises()}" />
+
+                    </h:selectOneMenu>
+                </div>
+
+                <div class="mb-3">
+                    <label for="estatus" class="form-label" style="display: none;">Estado</label>
+                    <h:selectOneMenu style="display: none;" value="#{usuariosController.est.estadoRol}" styleClass="form-select">
+                        <f:selectItems value="#{usuariosController.listarEstados()}" />
+                    </h:selectOneMenu>
+                </div>
+
+                <div class="mb-3">
+                    <label for="estatus" class="form-label" style="display: none;">Estatus</label>
+                    <h:selectOneMenu id="estatus" value="#{usuariosController.user.rolId.idrol}" style="display: none;" styleClass="form-select">
+                        <f:selectItems value="#{usuariosController.listarRol()}"/>
+                    </h:selectOneMenu>
+                </div>
+
+             
+                <h:messages globalOnly="true" style="color: red" />
+                <h:commandButton value="Registrarse" action="#{usuariosController.crearUsuario()}" styleClass="btn btn-primary" id="abrirModal" />
+
+            </h:form>
+
+            <!--  PanelGroup para éxito -->
+            <h:panelGroup rendered="#{facesContext.maximumSeverity.ordinal eq 0}">
+                <script>
+                    document.addEventListener("DOMContentLoaded", function () {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Registro exitoso',
+                            text: "#{facesContext.messageList[0].summary}",
+                            confirmButtonColor: '#efb810'
+                        }).then(() => {
+                            window.location.href = 'newLogin.xhtml';
+                        });
+                    });
+                </script>
+            </h:panelGroup>
+
+            <!-- ❌ PanelGroup para error -->
+            <h:panelGroup rendered="#{facesContext.maximumSeverity.ordinal ge 2}">
+                <script>
+                    document.addEventListener("DOMContentLoaded", function () {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: "#{facesContext.messageList[0].summary}",
+                            confirmButtonColor: '#efb810'
+                        });
+                    });
+                </script>
+            </h:panelGroup>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+                    integrity="sha384-kenU1KFdBIe4zVF0s0G1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+            crossorigin="anonymous"></script>
+
+        </main>
+
+        <!-- Pie de página -->
+        <footer class="foot">
+            <section class="sec">
+                <ul class="navlink">
+                    <label class="List">Productos<br /><br /></label>
+                    <li><a href="404.xhtml">¿Por qué Basic Finance?</a></li>
+                </ul>
+                <ul class="navlink">
+                    <label class="List">Recursos<br /><br /></label>
+                    <li><a href="#">Consejos Sobre cómo Ahorrar</a></li>
+                    <li><a href="#">Artículos e información sobre el Mercado</a></li>
+                    <li><a href="#">Consejos Sobre Finanzas</a></li>
+                </ul>
+                <ul class="navlink">
+                    <label class="List">Empresa<br /><br /></label>
+                    <li><a href="#">Nuestra Historia</a></li>
+                    <li><a href="#">Accesibilidad</a></li>
+                    <li><a href="#">Eventos</a></li>
+                    <li><a href="#">Desarrolladores</a></li>
+                </ul>
+                <ul class="navlink">
+                    <label class="List">Ayuda<br /><br /></label>
+                    <li><a href="#">Convenios</a></li>
+                    <li><a href="#">Centro de Ayuda</a></li>
+                </ul>
+                <ul class="navlink">
+                    <label class="Lista">Redes</label>
+                    <li><img src="Face.svg" class="face" /><a href="https://web.facebook.com/">Facebook</a></li>
+                    <li><img src="inst.svg" class="Inst" /><a href="https://www.instagram.com/">Instagram</a></li>
+                    <li><img src="X.svg" class="twt" /><a href="https://x.com/">X</a></li>
+                    <li><img src="what.svg" class="what" /><a href="https://www.whatsapp.com/?lang=es_LA">Whatsapp</a></li>
+                </ul>
+            </section>
+        </footer>
+    </h:body>
+</html>

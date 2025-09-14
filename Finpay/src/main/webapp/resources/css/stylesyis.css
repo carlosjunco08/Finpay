@@ -1,0 +1,198 @@
+/* Estilos Generales del Bodyis */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f4f4f4; /* Fondo gris claroyis */
+    color: #333;
+}
+
+.contenedoryis {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 0;
+}
+
+/* Estilos de la Sección de Contenidoyis */
+.seccion-contenidoyis { /* Esta es la clase 'seccion-contenidoyis' */
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 40px 0;
+    gap: 30px; /* Espacio entre las tarjetasyis */
+}
+
+.tarjetayis { /* Esta es la clase 'tarjetayis' */
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+    width: calc(33% - 40px); /* 3 tarjetas por fila con espacio */
+    min-width: 280px;
+    box-sizing: border-box; /* Incluye paddingyis y borderyis en el anchoyis */
+    text-align: center;
+    padding-bottom: 20px; /* Espacio debajo del contenidoyis */
+    transition: 
+        transform 0.2s,
+        box-shadow 0.2s;
+    cursor: pointer;
+}
+
+.tarjetayis img {
+    display: block;
+    margin: 0 auto 10px auto;
+    max-width: 350px;
+    width: 100%;
+    height: auto;
+    max-height: 220px;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+.tarjetayis:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 16px rgba(30, 64, 175, 0.18);
+}
+
+.tarjetayis h2 { /* Este es el h2yis de la tarjetayis */
+    font-size: 1.4em;
+    color: #333;
+    margin-bottom: 15px;
+    padding: 0 15px;
+}
+
+.tarjetayis p { /* Este es el pyis de la tarjetayis */
+    font-size: 0.95em;
+    line-height: 1.6;
+    color: #555;
+    padding: 0 20px;
+    text-align: justify; /* Justifica el textoyis para una apariencia más limpia */
+}
+
+.contenido-tarjetayis {
+    display: none;
+    transition: max-height 0.3s ease;
+}
+.tarjetayis.activa .contenido-tarjetayis {
+    display: block;
+}
+
+/* Mostrar todas las tarjetas normalmente */
+.tarjetayis {
+    display: block;
+}
+
+/* Elimino reglas de ocultar y expandir tarjetas, vuelvo al diseño original */
+.tarjetayis.activa {
+    width: auto !important;
+    max-width: none !important;
+    margin: initial !important;
+    display: block;
+    box-sizing: border-box;
+}
+.tarjetayis.ocultar {
+    display: block !important;
+}
+
+
+
+.cardyis {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(30, 64, 175, 0.08);
+    padding: 24px;
+    width: 350px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cardyis:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 24px rgba(30, 64, 175, 0.15);
+}
+
+.cardyis figure {
+    margin: 0 0 16px 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.cardyis img, .cardyis h\:graphicImage {
+    display: block;
+    margin: 0 auto;
+    max-width: 220px;
+    width: 100%;
+    height: auto;
+    max-height: 160px;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+.cardyis .contenido {
+    width: 100%;
+    text-align: center;
+}
+
+.cardyis h3 {
+    margin: 12px 0 8px 0;
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #222;
+}
+
+.contenido-tarjetayis {
+    display: none;
+    margin-top: 10px;
+    text-align: justify;
+    font-size: 1em;
+    color: #333;
+}
+
+.cardyis.activa .contenido-tarjetayis {
+    display: block;
+}
+
+.icono-circular {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: #f0f0f0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    margin: 0 auto 10px auto;
+}
+
+/* Diseñoyis Responsivoyis */
+@media (max-width: 992px) {
+    .tarjetayis { /* Esta es una tarjetayis */
+        width: calc(50% - 20px); /* Dos tarjetasyis por filayis en pantallas medianasyis */
+    }
+}
+
+@media (max-width: 768px) {
+    .tarjetayis { /* Esta es una tarjetayis */
+        width: 90%; /* Una tarjetayis por filayis en pantallas pequeñas */
+    }
+}
+
+@media (max-width: 900px) {
+    .tarjetayis {
+        width: 48%;
+    }
+}
+@media (max-width: 600px) {
+    .tarjetayis {
+        width: 98%;
+    }
+}

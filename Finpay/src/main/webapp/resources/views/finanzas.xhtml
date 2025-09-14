@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="./TemplateGeneral.xhtml">
+
+        <ui:define name="content">
+            <h1>Registro de Finanzas Personales</h1>
+
+            <h:form id="financeForm" styleClass="finance-form">
+                <h2>Registrar Movimiento</h2>
+
+                <h:messages globalOnly="true" style="color: blue;" />
+
+                <h3>Ingresos</h3>
+                <h:panelGrid columns="3" cellpadding="5">
+                    <h:outputLabel for="incomeAmount" value="Monto del Ingreso:"/>
+                    <h:inputText id="incomeAmount" value="#{financeBean.incomeAmount}"
+                                 required="false" styleClass="input-field">
+                        <f:convertNumber type="number" /> <f:validateDoubleRange minimum="0.01" />
+                    </h:inputText>
+                    <h:message for="incomeAmount" style="color: red;"/>
+
+                    <h:outputLabel for="incomeDescription" value="Descripción del Ingreso:"/>
+                    <h:inputText id="incomeDescription" value="#{financeBean.incomeDescription}"
+                                 maxlength="255" styleClass="input-field"/>
+                    <h:message for="incomeDescription" style="color: red;"/>
+
+                    <h:outputLabel for="incomeDate" value="Fecha del Ingreso:"/>
+                    <p:calendar id="incomeDate" value="#{financeBean.incomeDate}"
+                                pattern="yyyy-MM-dd" mask="true"
+                                showOn="button" navigator="true"
+                                required="false" styleClass="input-field" />
+                    <h:message for="incomeDate" style="color: red;"/>
+
+                    <h:outputLabel for="incomeCategory" value="Categoría del Ingreso:"/>
+                    <h:selectOneMenu id="incomeCategory" value="#{financeBean.incomeCategory}"
+                                     required="false" styleClass="input-field">
+                        <f:selectItems value="#{financeBean.categories}" />
+                    </h:selectOneMenu>
+                    <h:message for="incomeCategory" style="color: red;"/>
+                </h:panelGrid>
+
+                <br/>
+
+                <h3>Gastos</h3>
+                <h:panelGrid columns="3" cellpadding="5">
+                    <h:outputLabel for="expenseAmount" value="Monto del Gasto:"/>
+                    <h:inputText id="expenseAmount" value="#{financeBean.expenseAmount}"
+                                 required="false" styleClass="input-field">
+                        <f:convertNumber type="number" /> <f:validateDoubleRange minimum="0.01" />
+                    </h:inputText>
+                    <h:message for="expenseAmount" style="color: red;"/>
+
+                    <h:outputLabel for="expenseDescription" value="Descripción del Gasto:"/>
+                    <h:inputText id="expenseDescription" value="#{financeBean.expenseDescription}"
+                                 maxlength="255" styleClass="input-field"/>
+                    <h:message for="expenseDescription" style="color: red;"/>
+
+                    <h:outputLabel for="expenseDate" value="Fecha del Gasto:"/>
+                    <p:calendar id="expenseDate" value="#{financeBean.expenseDate}"
+                                pattern="yyyy-MM-dd" mask="true"
+                                showOn="button" navigator="true"
+                                required="false" styleClass="input-field" />
+                    <h:message for="expenseDate" style="color: red;"/>
+
+                    <h:outputLabel for="expenseCategory" value="Categoría del Gasto:"/>
+                    <h:selectOneMenu id="expenseCategory" value="#{financeBean.expenseCategory}"
+                                     required="false" styleClass="input-field">
+                        <f:selectItems value="#{financeBean.categories}" />
+                    </h:selectOneMenu>
+                    <h:message for="expenseCategory" style="color: red;"/>
+                </h:panelGrid>
+
+                <br/>
+
+                <h:commandButton value="Registrar Movimiento" action="#{financeBean.registerMovement}"
+                                 styleClass="submit-button"/>
+            </h:form>
+        </ui:define>
+
+    </ui:composition>
+</html>
