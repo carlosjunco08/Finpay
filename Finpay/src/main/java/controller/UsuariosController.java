@@ -30,6 +30,12 @@ import com.google.gson.Gson;
 import entities.Suscripcion;
 import java.util.stream.Collectors;
 import services.SuscripcionFacadeLocal;
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
+import javax.servlet.http.Part;
+import java.io.*;
+import java.util.Arrays;
+
 /**
  *
  * @author Jhon Deibys Torres
@@ -165,6 +171,76 @@ public class UsuariosController implements Serializable{
         this.rol.setEstadoRolId(new EstadoRol());
 
     }
+    // kevin diaz -----> cargue de Datos  
+    private Part archivoCsv;
+
+    @EJB
+    private UsuarioFacadeLocal usuarioFacade;
+
+    public Part getArchivoCsv() {
+        return archivoCsv;
+    }
+
+    public void setArchivoCsv(Part archivoCsv) {
+        this.archivoCsv = archivoCsv;
+    }
+
+    public void cargarUsuariosDesdeCsv() {
+    if (archivoCsv != null) {
+        try (BufferedReader br = new BufferedReader(
+                new InputStreamReader(archivoCsv.getInputStream()))) {
+
+            String linea;
+            boolean primera = true;
+            int contador = 0;
+
+            while ((linea = br.readLine()) != null) {
+                if (primera) { 
+                    primera = false; // saltar cabecera
+                    continue;
+                }
+
+                String[] datos = linea.split(",");
+
+                Usuario u = new Usuario();
+                u.setNombres(datos[0].trim());
+                u.setApellidos(datos[1].trim());
+                u.setIdentificacion(datos[2].trim());
+                u.setCorreo(datos[3].trim());
+                u.setTelefono(datos[4].trim());
+                u.setDireccion(datos[5].trim());
+                u.setEdad(Integer.parseInt(datos[6].trim()));
+                u.setContraseña(datos[7].trim());
+                u.setNombreUsuario(datos[9].trim()); // columna 10
+
+                // Relación con Pais (desde el CSV)
+                int paisId = Integer.parseInt(datos[8].trim());
+                Pais pais = pfl.find(paisId);
+                u.setPaisId(pais);
+
+                // Relación con Rol (por defecto 2)
+                Rol rol = rfl.find(2);
+                u.setRolId(rol);
+
+                usuarioFacade.create(u);
+                contador++;
+            }
+            
+
+            FacesContext.getCurrentInstance().addMessage(null,
+                new FacesMessage(FacesMessage.SEVERITY_INFO, 
+                "Carga exitosa", contador + " usuarios fueron cargados desde CSV."));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            FacesContext.getCurrentInstance().addMessage(null,
+                new FacesMessage(FacesMessage.SEVERITY_ERROR, 
+                "Error al cargar CSV", e.getMessage()));
+        }
+    }
+}
+
+    // kevin diaz -----> cargue de Datos  
 
     public String crearUsuario() {
 

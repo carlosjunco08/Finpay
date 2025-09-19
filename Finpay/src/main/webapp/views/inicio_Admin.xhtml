@@ -21,11 +21,11 @@
                                                          action="#{usuariosController.crearUsuarioPartOne()}"
                                                          styleClass="btn-custom btn-crear">
                                             <f:ajax execute="@form" render="modalForm" onevent="abrirModalUsuario" />
-                                        </h:commandButton>
+                                        </h:commandButton>                                                                                                        
                                     </h:form></th></tr>
                             <tr>
                                 <th>Rol</th>
-                                <th>Nombre de Usuario</th>
+                                <th>Nombre de Usuario</th>      
                                 <th>Nombres</th>
                                 <th>Apellidos</th>
                                 <th>Identificacion</th>
@@ -39,6 +39,7 @@
                                 <th>Acciones</th>
                             </tr>
                         </thead>
+                        
                         <tbody>
                             <ui:repeat value="#{usuariosController.listarUsuarios()}"  var="user">
                                 <tr>
@@ -55,6 +56,7 @@
                                     <td>#{user.paisId.nombrePais}</td>
                                     <td>#{user.rolId.estadoRolId.estadoRol}</td>
                                     <td>
+                                        
                                         <h:form>
                                             <h:commandButton value="Editar"
                                                              action="#{usuariosController.editarUserOne(user)}"
@@ -72,8 +74,21 @@
                                 </tr>
                             </ui:repeat>
                         </tbody>
+                        
                     </table>
+                    <h:form id="csvForm" enctype="multipart/form-data">
+    <h:panelGroup>
+        <h:inputFile id="csvFile"
+                     value="#{usuariosController.archivoCsv}"
+                     styleClass="form-control"
+                     required="true" />
+        <h:commandButton value="Cargar Usuarios"
+                         action="#{usuariosController.cargarUsuariosDesdeCsv}"
+                         styleClass="btn btn-success mt-2" />
+    </h:panelGroup>
+</h:form>
                 </div>
+                
                 <h:form id="modalForm">
                     <div class="modal fade" id="modalUsuario" tabindex="-1" aria-labelledby="modalUsuarioLabel" aria-hidden="true">
                         <div class="modal-dialog modal-xl modal-dialog-centered">
@@ -173,6 +188,9 @@
                         </div>
                     </div>
                 </h:form>
+               
+
+
 
                 <script>
                     $(document).ready(function () {
