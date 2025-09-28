@@ -88,21 +88,6 @@ header .navlinks {
     animation: backAnimation 11s ease infinite;
 }
 
-@keyframes backAnimation{
-
-    0%{
-        background-position: 0% 50%;
-    }
-
-    50%{
-        background-position: 100% 50%;
-
-    }
-    100%{
-        background-position: 0% 50%;
-    }
-}
-
 .mb-3{
 
     display: flex;

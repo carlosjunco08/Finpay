@@ -73,7 +73,19 @@
                             </ui:repeat>
                         </tbody>
                     </table>
+                    <h:form id="csvForm" enctype="multipart/form-data">
+                        <h:panelGroup>
+                            <h:inputFile id="csvFile"
+                                         value="#{usuariosController.archivoCsv}"
+                                         styleClass="form-control"
+                                         required="true" />
+                            <h:commandButton value="Cargar Usuarios"
+                                             action="#{usuariosController.cargarUsuariosDesdeCsv}"
+                                             styleClass="btn btn-success mt-2" />
+                        </h:panelGroup>
+                    </h:form>
                 </div>
+                
                 <h:form id="modalForm">
                     <div class="modal fade" id="modalUsuario" tabindex="-1" aria-labelledby="modalUsuarioLabel" aria-hidden="true">
                         <div class="modal-dialog modal-xl modal-dialog-centered">
@@ -237,7 +249,7 @@
                     </script>
                 </h:panelGroup>
 
-                
+
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
                         integrity="sha384-kenU1KFdBIe4zVF0s0G1RWuH61DGLwZJEdK2Kadq2F9CUG65"
                 crossorigin="anonymous"></script>
