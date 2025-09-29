@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
+/* ====================================
+   AJUSTES GLOBALES
+   ==================================== */
+
 *,
 ::after,
 ::before, a {
@@ -11,199 +15,110 @@
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
+    /* Ajustes de fondo movidos al .login-container para el login,
+       si este es el CSS general, podemos mantenerlo o quitarlo
+       dependiendo de si tiene una imagen de fondo general. */
     background-repeat: no-repeat;
     background-position: center bottom;
     background-size: cover;
     height: 100vh;
-  
 }
 
-#top{
-    background: linear-gradient(rgb(0, 139, 139), #000d);
+/* ====================================
+   LAYOUT PRINCIPAL
+   ==================================== */
+
+/* Cabecera superior */
+#top {
+    /* CAMBIO DE COLOR: Azul */
+    background: linear-gradient(rgb(13, 71, 161), #000d);
     height: 70px;
     display: flex;
     justify-content: space-evenly;
-    align-items:  center;
-    
-    
+    align-items: center;
 }
 
-#top .btn{
-    background:   rgb(0, 139, 139);
+#top .btn {
+    /* CAMBIO DE COLOR: Azul */
+    background: rgb(13, 71, 161);
     color: #fff;
     border: none;
     font-size: 17px;
 }
 
-#top .btn:hover{
-    background-color:   #efb810;
+#top .btn:hover {
+    background-color: #efb810;
     border: none;
     font-size: 17px;
 }
-#top a{
-     color: #fff;
-     font-size: 17px;
+
+#top a {
+    color: #fff;
+    font-size: 17px;
 }
 
-#top a:hover{
-    color:  #efb810;
+#top a:hover {
+    color: #efb810;
     cursor: pointer;
     text-decoration: none;
 }
 
-#top figure{
-    
+#top figure {
     height: 60px;
     width: 90px;
 }
 
-#top figure img{
-    
+#top figure img {
     width: 100%;
     height: 100%;
 }
+
 .layout-wrapper {
     display: flex;
     flex-direction: row;
     width: 100%;
-    height: 100%;
+    min-height: calc(100vh - 70px); /* Ajuste para el alto del #top */
 }
 
-#left{
-    
-    background:  linear-gradient(rgb(0, 139, 139), #000d);
-    height: auto;
+/* Columna izquierda / Sidebar */
+#left {
     width: 18%;
-    color:white;
+    color: white;
     display: flex;
-    
-}
-.sidebar .logo{
-
-    height: auto;
-    width: auto ;
 }
 
-.sidebar .logo img{
-
-    width: 120px;
-    height: 60px;  
-    margin:1px 20px 5px 20px ;
-    filter: drop-shadow(-20px 0 20px #000);
-    
-
-}
-
-.sidebar h3 {
-    font-size: 1.2375rem;
-    
-}
-
-
-.sidebar a {
-    cursor: pointer;
-    text-decoration: none;
-    font-family: 'Poppins', sans-serif;
-}
-
-.sidebar a:hover{
-    text-decoration: none;
-}
-
-li {
-    list-style: none;
-}
-
-#sidebar {
-    
+#left .sidebar {
+    /* CAMBIO DE COLOR: Azul */
+    background: linear-gradient(rgb(13, 71, 161), #000d);
     width: 100%;
-    height: 100vh;
-    background-color: #fff;
+    height: 100%; /* Ocupa toda la altura disponible en layout-wrapper */
     box-shadow: 0 0 35px 0 rgba(17, 73, 137, 0.5);
     z-index: 1111;
     transition: all 0.35s ease-in-out;
 }
 
-#sidebar.collapsed {
-    margin-left: -264px;
-}
-#sidebar.collapsed + .main .navbar {
-    justify-content: center; /* Centra los elementos */
-    gap: 100px; /* Elimina el espacio entre los elementos */
+/* Ajustes del Sidebar */
+.sidebar .logo {
+    height: auto;
+    width: auto;
 }
 
-.main {
-    margin-left: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    width: 100%;
-    overflow-y: auto;
-    transition: margin-left 0.35s ease;
-}
-.navbar {
-
-    display: flex;
-    align-items: center;
-    gap: 140px;
-    background: linear-gradient(rgb(0, 139, 139), #000d);
-    width: 100%;
-    padding: 1rem;
-    
+.sidebar .logo img {
+    width: 120px;
+    height: 60px;
+    margin: 1px 20px 5px 20px;
+    filter: drop-shadow(-20px 0 20px #000);
 }
 
-
-.btn {
-   
+.sidebar .h-100 .sidebar-logo a {
     color: #efb810;
-    border: none;
-    font-size: 2rem;
-    cursor: pointer;
-    transition: color 0.3s ease;
-    
-}
-
-.btn:hover {
-    color: #efb810; /* Color dorado más brillante en hover */
-}
-
-.fa-solid{
-    color: #fff;
-}
-
-.fa-solid:hover{
-    color: #efb810;
-}
-
-
-
-.material-symbols-outlined{
-
-    color: #efb810;
-    
-}
-
-.navbar li a{
-
-    color: #efb810;
-    text-decoration: none;
-    
-}
-.navbar li a:hover{
-
-    color: #efb810;
-}
-
-
-
-#left .sidebar{
-    background:linear-gradient(rgb(0, 139, 139), #000d) ;
+    margin-left: 50px;
+    text-transform: uppercase;
 }
 
 .sidebar-nav .sidebar-link {
-    color: #fff; 
+    color: #fff;
     font-weight: bold;
-
     font-size: 15px;
     display: flex;
     align-items: center;
@@ -211,61 +126,24 @@ li {
     transition: color 0.3s ease;
 }
 
-.sidebar .h-100 .sidebar-logo a{
-
-    color: #efb810;
-    margin-left: 50px;
-    text-transform: uppercase;
-        
-}
-
 .sidebar-nav a:hover {
-    color: #efb810; /* Color en hover */
+    color: #efb810;
 }
 
-.sidebar-nav .sidebar-header{ 
-
+.sidebar-nav .sidebar-header {
     color: #fff;
 }
 
 .sidebar-nav .fa {
     color: #fff;
-    margin-right: 1rem; 
+    margin-right: 1rem;
 }
 
 .sidebar-nav .fa:hover {
     color: #efb810;
 }
 
-
-
-.sidebar-logo {
-    padding: 1.15rem 1.5rem;
-}
-
-.sidebar-logo a {
-   
-    font-size: 1.25rem;
-    font-weight: 600;
-}
-
-.sidebar-nav {
-    padding: 0;
-}
-
-.sidebar-header {
-    
-    font-size: 15px;
-    padding: 1.5rem 1.5rem .375rem;
-}
-
-.sidebar-link {
-    padding: .625rem 1.625rem;
-    position: relative;
-    display: block;
-    font-size: 1rem;
-}
-
+/* Estilos de expansión del sidebar (Dropdown/Collapse) */
 .sidebar-link[data-bs-toggle="collapse"]::after {
     border: solid;
     border-width: 0 .075rem .075rem 0;
@@ -282,8 +160,9 @@ li {
 .sidebar-link[data-bs-toggle="collapse"].collapsed::after {
     transform: rotate(45deg);
     transition: all .2s ease-out;
-} 
+}
 
+/* Contenido Principal (Derecha) */
 .left_content {
     flex-grow: 1;
     padding: 20px;
@@ -291,165 +170,343 @@ li {
     overflow-y: auto;
 }
 
-
-
-
-#bottom{
-    
+/* Footer */
+#bottom {
     display: flex;
-     background: #000;
+    background: #000;
     padding: 10px;
     color: rgb(221, 177, 20);
-   
-   
-}
-
-#bottom .foot{
-    display: flex;
 }
 
 #bottom .sec {
     display: flex;
-
+    flex-basis: 20rem;
+    flex-grow: 1;
+    justify-content: center;
+    margin: 10px 10px;
 }
-#bottom .sec .navlink{
-    
-    margin: 0 40px 0 40px; 
+
+#bottom .sec .navlink {
+    margin: 20px 0 10px 20px;
+    padding: 20px;
+    list-style: none;
 }
 
-#bottom .sec a{
-    
+#bottom .sec a {
     text-decoration: none;
     color: white;
-    list-style: none;
-  
 }
 
-#bottom .sec .Lista{
+#bottom .sec .Lista {
     color: #efb810;
     font-weight: 700;
     font-size: 16px;
 }
-#bottom .sec a:hover{
-    
-    color: #efb810;
-}
-.sec{
 
-    display: flex;
-    flex-basis: 20rem;
-    flex-grow: 1;
-    justify-content: center;
-    margin: 10px 10px;  
-    
-    
-    
-}
-
-.sec .navlink{
-
-    margin-left: 20px;
-}
-.sec li{
-
-    text-decoration: none;
-    margin-top: 40px;
-    margin-left: 10px;
-}
-.navlink li a{
-
+.navlink li a {
     color: #efb810;
     text-shadow: -10px 0 20px black;
     text-decoration: none;
     padding: 0px;
 }
-.navlink{
 
-    position: relative;
-    margin: 20px 0 10px 0;
-    padding: 20px;
-    list-style: none;
-
-}
-.sec li{
-
+.sec li {
     padding: 0px;
-    padding-right: 0px;
     margin-top: 20px;
     margin-right: 10px;
     align-items: center;
-    
-    
-
 }
-.Lista{
 
-    height: 40px;
+/* Iconos y enlaces de redes sociales en el footer */
+.navlink a:hover {
     color: white;
-    
 }
 
-.btn-cancelar {
-    background-color: #0d6ef7 !important;
-    color: white !important;
-    border: none !important;
-    padding: 10px 20px;
-    font-weight: bold;
-    border-radius: 5px;
-}
-.modal-content .modal-header{
-    background-color:  rgb(0, 139, 139) !important;
-    color: #fff;
-}
-.modal-content  .modal-header .btn-close{
-    background-color: #fff !important;
-}
-.btn-success{
-
-    background-color: rgb(0, 139, 139) !important;
-    color: white !important;
-    border: none !important;
-    padding: 10px 20px;
-    font-weight: bold;
-    border-radius: 5px;
-}
-
-.btn-success:hover{
-    
-     background-color:#efb810 !important;
-}
-.btn-cancelar:hover{
-    
-    background-color:#1CA0F2 !important;
-}
-
-
-.navlink a:hover{
-
-    color:white;
-}
-.navlink img{
-
-    cursor: pointer;
-}
-.navlink img:hover{
-
+.navlink img:hover {
     transform: translateY(-10%);
-
 }
-.navlink  .face:hover{
 
+.navlink .face:hover {
     filter: invert(41%) sepia(27%) saturate(4360%) hue-rotate(184deg) brightness(104%) contrast(98%);
 }
-.navlink  .Inst:hover{
 
+.navlink .Inst:hover {
     filter: invert(24%) sepia(90%) saturate(7467%) hue-rotate(357deg) brightness(112%) contrast(93%);
 }
-.navlink  .twt:hover{
 
+.navlink .twt:hover {
     filter: invert(41%) sepia(27%) saturate(4360%) hue-rotate(184deg) brightness(104%) contrast(98%);
 }
-.navlink  .what:hover{
 
+.navlink .what:hover {
     filter: invert(39%) sepia(66%) saturate(1771%) hue-rotate(91deg) brightness(93%) contrast(105%);
+}
+
+/* ====================================
+   ESTILOS DEL FORMULARIO DE LOGIN (NUEVOS/ACTUALIZADOS)
+   ==================================== */
+
+/* Contenedor principal para la página de login */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 70px - 20px - 20px); /* Ajuste basado en #top y padding */
+    padding: 20px 0;
+}
+
+.login-panel {
+    background: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 400px; /* Ancho máximo para el panel de login */
+    text-align: center;
+}
+
+.login-panel__logo img {
+    max-width: 150px;
+    margin-bottom: 20px;
+}
+
+.login-panel__title {
+    color: rgb(13, 71, 161);
+    margin-bottom: 30px;
+    font-weight: 600;
+    font-size: 1.8rem;
+}
+
+.message-container {
+    margin-bottom: 20px;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.form-group__label {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    color: #aaa;
+    pointer-events: none;
+    transition: 0.2s ease all;
+    font-size: 1rem;
+    font-weight: normal;
+}
+
+.form-input {
+    width: 100%;
+    padding: 15px 15px 5px 15px;
+    background: none;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    font-size: 1rem;
+    outline: none;
+    color: #333;
+}
+
+/* Efecto de 'flotación' del label cuando el input está enfocado o tiene contenido */
+.form-input:focus ~ .form-group__label,
+.form-input:not([p\:placeholder=" "]):valid ~ .form-group__label,
+.form-input:not(:placeholder-shown) ~ .form-group__label {
+    top: 0;
+    font-size: 0.8rem;
+    color: rgb(13, 71, 161);
+    font-weight: bold;
+}
+
+/* Estilo para los mensajes de error */
+.form-error-message {
+    color: #dc3545; /* Rojo de Bootstrap */
+    font-size: 0.85rem;
+    margin-top: 5px;
+    display: block;
+}
+
+/* Estilo para el botón de Ingresar */
+.btn--primary {
+    /* CAMBIO DE COLOR: Botón principal en azul */
+    background-color: rgb(13, 71, 161);
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.btn--primary:hover {
+    background-color: #efb810; /* Amarillo al hacer hover */
+    color: #333;
+}
+
+.form-footer {
+    margin-top: 20px;
+}
+
+.form-footer__link {
+    color: rgb(13, 71, 161);
+    font-size: 0.9rem;
+}
+
+.form-footer__link:hover {
+    color: #efb810;
+}
+
+
+/* ====================================
+   AJUSTES DE BOTONES MODALES (General)
+   ==================================== */
+
+.btn-cancelar {
+    background-color: #0d6ef7 !important; /* Azul Bootstrap por defecto */
+    color: white !important;
+    border: none !important;
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.modal-content .modal-header {
+    /* CAMBIO DE COLOR: Azul */
+    background-color: rgb(13, 71, 161) !important;
+    color: #fff;
+}
+
+.modal-content .modal-header .btn-close {
+    background-color: #fff !important;
+}
+
+.btn-success {
+    /* CAMBIO DE COLOR: Azul */
+    background-color: rgb(13, 71, 161) !important;
+    color: white !important;
+    border: none !important;
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.btn-success:hover {
+    background-color: #efb810 !important;
+}
+
+.btn-cancelar:hover {
+    background-color: #1CA0F2 !important;
+}
+
+/* ====================================
+   ESTILOS DE TARJETAS RESPONSIVAS (Contenido Principal)
+   ==================================== */
+
+/* Contenedor principal para organizar las tarjetas */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+/* Estilo para cada tarjeta */
+.card {
+    /* Anchura para que 3 tarjetas quepan en una fila */
+    flex-basis: calc(33.333% - 14px);
+    min-width: 250px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding-bottom: 20px;
+}
+
+.card figure {
+    margin: 0;
+    height: 180px;
+    overflow: hidden;
+}
+
+.card figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card .contenido {
+    padding: 20px;
+    text-align: left;
+}
+
+.card .contenido h3 {
+    /* CAMBIO DE COLOR: Título de la tarjeta en azul */
+    color: rgb(13, 71, 161);
+    margin-top: 0;
+    font-size: 1.2rem;
+}
+
+.card .contenido p {
+    font-size: 0.95rem;
+    color: #444;
+    line-height: 1.4;
+}
+
+.card .contenido a {
+    display: inline-block;
+    color: #efb810;
+    font-weight: bold;
+    margin-top: 10px;
+    transition: color 0.3s;
+}
+
+.card .contenido a:hover {
+    /* CAMBIO DE COLOR: Hover de enlace en azul */
+    color: rgb(13, 71, 161);
+}
+
+/* ====================================
+   MEDIA QUERIES
+   ==================================== */
+
+/* Media Query para Tabletas (2 columnas) */
+@media (max-width: 992px) {
+    .card {
+        flex-basis: calc(50% - 10px);
+    }
+}
+
+/* Media Query para Móviles Pequeños (1 columna) */
+@media (max-width: 600px) {
+    .card {
+        width: 100%;
+        flex-basis: 100%;
+    }
+    .sec {
+        flex-direction: column;
+        align-items: center;
+    }
+    .sec .navlink {
+        margin: 10px 0;
+    }
+    .layout-wrapper {
+        flex-direction: column;
+    }
+    #left {
+        width: 100%;
+    }
+    .left_content {
+        padding: 10px;
+    }
+    .login-container {
+        min-height: auto;
+    }
 }
