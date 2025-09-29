@@ -73,11 +73,11 @@ public class Login implements Serializable {
         if (user.getIdentificacion() != null && user.getRolId().getIdrol() == 1) {
             HttpSession sesion = ( HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
             sesion.setAttribute("usuario", usuario);
-            return "/resources/views/inicio_Admin.xhtml?faces-redirect=true";
+            return "views/inicio_Admin.xhtml?faces-redirect=true";
         }else if(user.getIdentificacion() != null && user.getRolId().getIdrol() == 2){
              HttpSession sesion = ( HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
             sesion.setAttribute("usuario", usuario);
-            return "/resources/views/inicio_Template.xhtml?faces-redirect=true";
+            return "views/inicio_Template.xhtml?faces-redirect=true";
         }
         else{
             FacesContext context =  FacesContext.getCurrentInstance();
