@@ -5,9 +5,9 @@
 package entities;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
+// import java.util.Collection; // Ya no es necesario
+// import javax.persistence.CascadeType; // Ya no es necesario si solo se usaba para Rol
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,12 +15,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
+// import javax.persistence.OneToMany; // Ya no es necesario
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
+// import javax.xml.bind.annotation.XmlTransient; // Ya no es necesario
 
 /**
  *
@@ -46,8 +46,10 @@ public class EstadoRol implements Serializable {
     @Size(min = 1, max = 20)
     @Column(name = "estado_rol")
     private String estadoRol;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "estadoRolId")
-    private Collection<Rol> rolCollection;
+    
+    // **RELACIÓN ELIMINADA:** // Se eliminó la colección OneToMany que causaba el error de mapeo inverso.
+    // @OneToMany(cascade = CascadeType.ALL, mappedBy = "estadoRolId")
+    // private Collection<Rol> rolCollection;
 
     public EstadoRol() {
     }
@@ -77,6 +79,9 @@ public class EstadoRol implements Serializable {
         this.estadoRol = estadoRol;
     }
 
+    // **GETTER/SETTER ELIMINADOS:**
+    // Ya no es necesario el getter y setter de rolCollection.
+    /*
     @XmlTransient
     public Collection<Rol> getRolCollection() {
         return rolCollection;
@@ -85,6 +90,7 @@ public class EstadoRol implements Serializable {
     public void setRolCollection(Collection<Rol> rolCollection) {
         this.rolCollection = rolCollection;
     }
+    */
 
     @Override
     public int hashCode() {

@@ -44,7 +44,7 @@ public class Pais implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 100)
-    @Column(name = "nombre_pais")
+    @Column(name = "nombrepais")
     private String nombrePais;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "paisId")
     private Collection<Usuario> usuarioCollection;

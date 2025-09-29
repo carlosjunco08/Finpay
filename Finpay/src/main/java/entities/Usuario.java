@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package entities;
 
 import java.io.Serializable;
@@ -37,7 +33,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Usuario.findByTelefono", query = "SELECT u FROM Usuario u WHERE u.telefono = :telefono"),
     @NamedQuery(name = "Usuario.findByDireccion", query = "SELECT u FROM Usuario u WHERE u.direccion = :direccion"),
     @NamedQuery(name = "Usuario.findByEdad", query = "SELECT u FROM Usuario u WHERE u.edad = :edad"),
-    @NamedQuery(name = "Usuario.findByContrase\u00f1a", query = "SELECT u FROM Usuario u WHERE u.contrase\u00f1a = :contrase\u00f1a"),
+    @NamedQuery(name = "Usuario.findByContrasena", query = "SELECT u FROM Usuario u WHERE u.contrasena = :contrasena"),
     @NamedQuery(name = "Usuario.findByNombreUsuario", query = "SELECT u FROM Usuario u WHERE u.nombreUsuario = :nombreUsuario")})
 public class Usuario implements Serializable {
 
@@ -82,17 +78,22 @@ public class Usuario implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 100)
-    @Column(name = "contrase\u00f1a")
-    private String contraseña;
+    @Column(name = "contrasena")
+    private String contrasena;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 50)
-    @Column(name = "nombre_usuario")
+    // ATENCIÓN: Revisar si en la BD el nombre es 'nombreUsuario' o 'nombreusuario'
+    @Column(name = "nombreUsuario")
     private String nombreUsuario;
-    @JoinColumn(name = "pais_id", referencedColumnName = "idpais")
+    
+    // CORRECCIÓN CLAVE FORÁNEA PAÍS: Nombre de columna forzado a "paisId" (como en la BD)
+    @JoinColumn(name = "paisId", referencedColumnName = "idpais")
     @ManyToOne(optional = false)
     private Pais paisId;
-    @JoinColumn(name = "rol_id", referencedColumnName = "idrol")
+    
+    // CORRECCIÓN CLAVE FORÁNEA ROL: Nombre de columna forzado a "rolId" (como en la BD)
+    @JoinColumn(name = "rolId", referencedColumnName = "idrol")
     @ManyToOne(optional = false)
     private Rol rolId;
 
@@ -103,7 +104,7 @@ public class Usuario implements Serializable {
         this.idusuario = idusuario;
     }
 
-    public Usuario(Integer idusuario, String nombres, String apellidos, String identificacion, String correo, String telefono, String direccion, String contraseña, String nombreUsuario) {
+    public Usuario(Integer idusuario, String nombres, String apellidos, String identificacion, String correo, String telefono, String direccion, String contrasena, String nombreUsuario) {
         this.idusuario = idusuario;
         this.nombres = nombres;
         this.apellidos = apellidos;
@@ -111,9 +112,11 @@ public class Usuario implements Serializable {
         this.correo = correo;
         this.telefono = telefono;
         this.direccion = direccion;
-        this.contraseña = contraseña;
+        this.contrasena = contrasena;
         this.nombreUsuario = nombreUsuario;
     }
+
+    // --- Getters y Setters ---
 
     public Integer getIdusuario() {
         return idusuario;
@@ -179,12 +182,12 @@ public class Usuario implements Serializable {
         this.edad = edad;
     }
 
-    public String getContraseña() {
-        return contraseña;
+    public String getContrasena() {
+        return contrasena;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
 
     public String getNombreUsuario() {
@@ -211,6 +214,8 @@ public class Usuario implements Serializable {
         this.rolId = rolId;
     }
 
+    // --- Métodos de Objeto (hashCode, equals, toString) ---
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -220,7 +225,6 @@ public class Usuario implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Usuario)) {
             return false;
         }
@@ -235,5 +239,4 @@ public class Usuario implements Serializable {
     public String toString() {
         return "entities.Usuario[ idusuario=" + idusuario + " ]";
     }
-    
 }

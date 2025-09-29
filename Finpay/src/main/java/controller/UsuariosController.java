@@ -166,7 +166,6 @@ public class UsuariosController implements Serializable{
         this.user = new Usuario();
         this.user.setPaisId(new Pais());
         this.user.setRolId(new Rol());
-        this.rol.setEstadoRolId(new EstadoRol());
 
     }
     
@@ -209,7 +208,7 @@ public class UsuariosController implements Serializable{
                 u.setTelefono(datos[4].trim());
                 u.setDireccion(datos[5].trim());
                 u.setEdad(Integer.parseInt(datos[6].trim()));
-                u.setContraseña(datos[7].trim());
+                u.setContrasena(datos[7].trim());
                 u.setNombreUsuario(datos[9].trim()); // columna 10
 
                 // Relación con Pais (desde el CSV)

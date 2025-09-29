@@ -13,8 +13,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+// import javax.persistence.JoinColumn; // COMENTADO/ELIMINADO
+// import javax.persistence.ManyToOne; // COMENTADO/ELIMINADO
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -46,13 +46,22 @@ public class Rol implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 50)
-    @Column(name = "nombre_rol")
+    @Column(name = "nombrerol")
     private String nombreRol;
+    
+    // Si la tabla 'RolHasUsuario' no existe, o si Usuario no tiene una relación con Rol,
+    // también deberías comentar estas colecciones.
+    // **Dejaremos las colecciones por ahora, asumiendo que el mapeo inverso es correcto
+    // y solo el campo 'estado_rol_id' es el problema.**
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "rolId")
     private Collection<RolHasUsuario> rolHasUsuarioCollection;
-    @JoinColumn(name = "estado_rol_id", referencedColumnName = "idestado_rol")
-    @ManyToOne(optional = false)
-    private EstadoRol estadoRolId;
+    
+    // **ESTA RELACIÓN FUE COMENTADA/ELIMINADA PARA RESOLVER EL ERROR DE COLUMNA:**
+    // @JoinColumn(name = "estado_rol_id", referencedColumnName = "idestado_rol")
+    // @ManyToOne(optional = false)
+    // private EstadoRol estadoRolId;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "rolId")
     private Collection<Usuario> usuarioCollection;
 
@@ -93,6 +102,8 @@ public class Rol implements Serializable {
         this.rolHasUsuarioCollection = rolHasUsuarioCollection;
     }
 
+    // **GETTER Y SETTER DE ESTADO_ROL_ID ELIMINADOS/COMENTADOS**
+    /*
     public EstadoRol getEstadoRolId() {
         return estadoRolId;
     }
@@ -100,6 +111,7 @@ public class Rol implements Serializable {
     public void setEstadoRolId(EstadoRol estadoRolId) {
         this.estadoRolId = estadoRolId;
     }
+    */
 
     @XmlTransient
     public Collection<Usuario> getUsuarioCollection() {

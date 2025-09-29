@@ -1,87 +1,83 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <ui:composition template="./TemplateGeneral.xhtml">
+<h:head>
+    <title>Finanzas Personales</title>
+</h:head>
 
-        <ui:define name="content">
-            <h1>Registro de Finanzas Personales</h1>
+<h:body>
+    <h:form id="financeForm">
 
-            <h:form id="financeForm" styleClass="finance-form">
-                <h2>Registrar Movimiento</h2>
+        <h1>💰 Finanzas Personales</h1>
 
-                <h:messages globalOnly="true" style="color: blue;" />
+        <!-- Panel de registro de transacción -->
+        <p:panel header="Nueva Transacción" style="margin-bottom:20px;">
+            <h:panelGrid columns="2" cellpadding="5">
 
-                <h3>Ingresos</h3>
-                <h:panelGrid columns="3" cellpadding="5">
-                    <h:outputLabel for="incomeAmount" value="Monto del Ingreso:"/>
-                    <h:inputText id="incomeAmount" value="#{financeBean.incomeAmount}"
-                                 required="false" styleClass="input-field">
-                        <f:convertNumber type="number" /> <f:validateDoubleRange minimum="0.01" />
-                    </h:inputText>
-                    <h:message for="incomeAmount" style="color: red;"/>
+                <h:outputLabel value="Monto:" for="amount"/>
+                <p:inputText id="amount" value="#{financeBean.formTransaction.amount}" />
 
-                    <h:outputLabel for="incomeDescription" value="Descripción del Ingreso:"/>
-                    <h:inputText id="incomeDescription" value="#{financeBean.incomeDescription}"
-                                 maxlength="255" styleClass="input-field"/>
-                    <h:message for="incomeDescription" style="color: red;"/>
+                <h:outputLabel value="Tipo:" for="type"/>
+                <p:selectOneMenu id="type" value="#{financeBean.formTransaction.type}">
+                    <f:selectItem itemLabel="Seleccione..." itemValue="" />
+                    <f:selectItem itemLabel="Ingreso" itemValue="Ingreso" />
+                    <f:selectItem itemLabel="Gasto" itemValue="Gasto" />
+                </p:selectOneMenu>
 
-                    <h:outputLabel for="incomeDate" value="Fecha del Ingreso:"/>
-                    <p:calendar id="incomeDate" value="#{financeBean.incomeDate}"
-                                pattern="yyyy-MM-dd" mask="true"
-                                showOn="button" navigator="true"
-                                required="false" styleClass="input-field" />
-                    <h:message for="incomeDate" style="color: red;"/>
+                <h:outputLabel value="Categoría:" for="category"/>
+                <p:inputText id="category" value="#{financeBean.formTransaction.category}" />
 
-                    <h:outputLabel for="incomeCategory" value="Categoría del Ingreso:"/>
-                    <h:selectOneMenu id="incomeCategory" value="#{financeBean.incomeCategory}"
-                                     required="false" styleClass="input-field">
-                        <f:selectItems value="#{financeBean.categories}" />
-                    </h:selectOneMenu>
-                    <h:message for="incomeCategory" style="color: red;"/>
-                </h:panelGrid>
+                <h:outputLabel value="Fecha:" for="date"/>
+                <p:calendar id="date" value="#{financeBean.formTransaction.date}" pattern="dd/MM/yyyy" />
 
-                <br/>
+            </h:panelGrid>
 
-                <h3>Gastos</h3>
-                <h:panelGrid columns="3" cellpadding="5">
-                    <h:outputLabel for="expenseAmount" value="Monto del Gasto:"/>
-                    <h:inputText id="expenseAmount" value="#{financeBean.expenseAmount}"
-                                 required="false" styleClass="input-field">
-                        <f:convertNumber type="number" /> <f:validateDoubleRange minimum="0.01" />
-                    </h:inputText>
-                    <h:message for="expenseAmount" style="color: red;"/>
+            <p:commandButton value="Agregar"
+                             actionListener="#{financeBean.addTransaction}"
+                             update=":financeForm:financeTable :financeForm:chart"
+                             icon="pi pi-plus"
+                             style="margin-top:10px;" />
+        </p:panel>
 
-                    <h:outputLabel for="expenseDescription" value="Descripción del Gasto:"/>
-                    <h:inputText id="expenseDescription" value="#{financeBean.expenseDescription}"
-                                 maxlength="255" styleClass="input-field"/>
-                    <h:message for="expenseDescription" style="color: red;"/>
+        <!-- Tabla de transacciones -->
+        <p:dataTable id="financeTable"
+                     value="#{financeBean.transactions}"
+                     var="t"
+                     style="width:100%;"
+                     paginator="true"
+                     rows="5">
 
-                    <h:outputLabel for="expenseDate" value="Fecha del Gasto:"/>
-                    <p:calendar id="expenseDate" value="#{financeBean.expenseDate}"
-                                pattern="yyyy-MM-dd" mask="true"
-                                showOn="button" navigator="true"
-                                required="false" styleClass="input-field" />
-                    <h:message for="expenseDate" style="color: red;"/>
+            <p:column headerText="Monto">
+                <h:outputText value="#{t.amount}" />
+            </p:column>
 
-                    <h:outputLabel for="expenseCategory" value="Categoría del Gasto:"/>
-                    <h:selectOneMenu id="expenseCategory" value="#{financeBean.expenseCategory}"
-                                     required="false" styleClass="input-field">
-                        <f:selectItems value="#{financeBean.categories}" />
-                    </h:selectOneMenu>
-                    <h:message for="expenseCategory" style="color: red;"/>
-                </h:panelGrid>
+            <p:column headerText="Tipo">
+                <h:outputText value="#{t.type}" />
+            </p:column>
 
-                <br/>
+            <p:column headerText="Categoría">
+                <h:outputText value="#{t.category}" />
+            </p:column>
 
-                <h:commandButton value="Registrar Movimiento" action="#{financeBean.registerMovement}"
-                                 styleClass="submit-button"/>
-            </h:form>
-        </ui:define>
+            <p:column headerText="Fecha">
+                <h:outputText value="#{t.date}">
+                    <f:convertDateTime pattern="dd/MM/yyyy" />
+                </h:outputText>
+            </p:column>
 
-    </ui:composition>
+        </p:dataTable>
+
+        <!-- Dashboard simple con gráfico -->
+        <p:panel header="Resumen de Finanzas" style="margin-top:20px;">
+            <p:chart id="chart"
+                     type="pie"
+                     model="#{financeBean.chartModel}"
+                     style="width:400px;height:300px;" />
+        </p:panel>
+
+    </h:form>
+</h:body>
 </html>

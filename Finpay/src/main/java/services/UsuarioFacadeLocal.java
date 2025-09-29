@@ -29,7 +29,9 @@ public interface UsuarioFacadeLocal {
 
     int count();
     
-    Usuario iniciarSesion(String nombre_user, String nombres, String contrasenna);
+    // CORRECCIÓN CLAVE: Ahora solo se esperan el correo y la contraseña
+    Usuario iniciarSesion(String correo, String contrasena); 
+    
     Usuario findByIdentificacion(String identificacion);
     Usuario findByCorreo(String correo);
      Usuario findByUsername(String user_name);
