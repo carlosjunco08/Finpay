@@ -2,111 +2,94 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
 
-    <ui:composition template="./TemplateGeneral.xhtml">
-
-        <ui:define name="content">
-            <h1>Registro de Finanzas Personales 💰</h1>
-
-            <h:form id="movementForm">
-                
-                <p:messages id="globalMessages" showDetail="true" closable="true" />
-                
-                <p:tabView id="tabView" style="max-width: 800px; margin: 0 auto;">
-                    
-                    <p:tab title="💰 Nuevo Ingreso" id="incomeTab">
-                        <h2>Registrar Ingreso</h2>
-                        
-                        <p:panelGrid columns="3" layout="grid" styleClass="ui-panelgrid-blank form-grid">
-
-                            <p:outputLabel for="incomeAmount" value="Monto del Ingreso:"/>
-                            <p:inputNumber id="incomeAmount" value="#{financeBean.incomeAmount}"
-                                           decimalSeparator="." thousandSeparator=","
-                                           minValue="0.01" required="true" 
-                                           requiredMessage="El monto del ingreso es obligatorio (mínimo 0.01)."/>
-                            <p:message for="incomeAmount" display="tooltip"/>
-
-                            <p:outputLabel for="incomeDescription" value="Descripción:"/>
-                            <p:inputText id="incomeDescription" value="#{financeBean.incomeDescription}" 
-                                         maxlength="100" required="true" 
-                                         requiredMessage="La descripción es obligatoria."/>
-                            <p:message for="incomeDescription" display="tooltip"/>
-
-                            <p:outputLabel for="incomeDate" value="Fecha:"/>
-                            <p:calendar id="incomeDate" value="#{financeBean.incomeDate}"
-                                        pattern="yyyy-MM-dd" mask="true" 
-                                        showOn="button" navigator="true" required="true" 
-                                        requiredMessage="La fecha es obligatoria."/>
-                            <p:message for="incomeDate" display="tooltip"/>
-
-                            <p:outputLabel for="incomeCategory" value="Categoría:"/>
-                            <p:selectOneMenu id="incomeCategory" value="#{financeBean.incomeCategory}"
-                                             required="true" 
-                                             requiredMessage="Seleccione una categoría de ingreso.">
-                                <f:selectItem itemLabel="-- Seleccione --" itemValue="#{null}" noSelectionOption="true"/>
-                                <f:selectItems value="#{financeBean.categories}" />
-                            </p:selectOneMenu>
-                            <p:message for="incomeCategory" display="tooltip"/>
-                            
-                            <p:column colspan="3" style="text-align: center; padding-top: 20px;">
-                                <p:commandButton value="Registrar Ingreso" 
-                                                 action="#{financeBean.registerIncome}" 
-                                                 update=":movementForm:globalMessages :movementForm:incomeTab" 
-                                                 styleClass="ui-button-success" />
-                                </p:column>
-                        </p:panelGrid>
-                    </p:tab>
-
-                    <p:tab title="💸 Nuevo Gasto" id="expenseTab">
-                         <h2>Registrar Gasto</h2>
-                        
-                         <p:panelGrid columns="3" layout="grid" styleClass="ui-panelgrid-blank form-grid">
-                            
-                            <p:outputLabel for="expenseAmount" value="Monto del Gasto:"/>
-                            <p:inputNumber id="expenseAmount" value="#{financeBean.expenseAmount}"
-                                           decimalSeparator="." thousandSeparator=","
-                                           minValue="0.01" required="true" 
-                                           requiredMessage="El monto del gasto es obligatorio (mínimo 0.01)."/>
-                            <p:message for="expenseAmount" display="tooltip"/>
-
-                            <p:outputLabel for="expenseDescription" value="Descripción:"/>
-                            <p:inputText id="expenseDescription" value="#{financeBean.expenseDescription}" 
-                                         maxlength="100" required="true" 
-                                         requiredMessage="La descripción es obligatoria."/>
-                            <p:message for="expenseDescription" display="tooltip"/>
-
-                            <p:outputLabel for="expenseDate" value="Fecha:"/>
-                            <p:calendar id="expenseDate" value="#{financeBean.expenseDate}"
-                                        pattern="yyyy-MM-dd" mask="true" 
-                                        showOn="button" navigator="true" required="true" 
-                                        requiredMessage="La fecha es obligatoria."/>
-                            <p:message for="expenseDate" display="tooltip"/>
-
-                            <p:outputLabel for="expenseCategory" value="Categoría:"/>
-                            <p:selectOneMenu id="expenseCategory" value="#{financeBean.expenseCategory}"
-                                             required="true" 
-                                             requiredMessage="Seleccione una categoría de gasto.">
-                                <f:selectItem itemLabel="-- Seleccione --" itemValue="#{null}" noSelectionOption="true"/>
-                                <f:selectItems value="#{financeBean.categories}" />
-                            </p:selectOneMenu>
-                            <p:message for="expenseCategory" display="tooltip"/>
-                            
-                            <p:column colspan="3" style="text-align: center; padding-top: 20px;">
-                                <p:commandButton value="Registrar Gasto" 
-                                                 action="#{financeBean.registerExpense}" 
-                                                 update=":movementForm:globalMessages :movementForm:expenseTab" 
-                                                 styleClass="ui-button-danger" />
-                                </p:column>
-                        </p:panelGrid>
-                    </p:tab>
-                    
-                </p:tabView>
-            </h:form>
-
+    <ui:composition template="/views/inicio_Template.xhtml"> 
+        
+        <ui:define name="titulo">
+            Registro de Movimientos Financieros
         </ui:define>
+        
+        <ui:define name="content">
+            <h:form id="finanzasForm">
+                <p:growl id="msgs" showDetail="true" />
 
+                <p:panel header="Registrar Nueva Transacción" style="margin-bottom:20px;">
+                    <p:panelGrid id="panelGridRegistro" columns="3" layout="grid" styleClass="ui-panelgrid-blank form-group">
+                        
+                        <p:outputLabel for="tipo" value="Tipo de Movimiento:" />
+                        <p:selectOneRadio id="tipo" value="#{finanzasBean.nuevaTransaccion.tipo}" required="true">
+                            <f:selectItem itemLabel="1. Ingreso" itemValue="INGRESO" />
+                            <f:selectItem itemLabel="2. Gasto" itemValue="GASTO" />
+                        </p:selectOneRadio>
+                        <p:message for="tipo" />
+                        
+                        <p:outputLabel for="monto" value="Monto ($):" />
+                        <p:inputNumber id="monto" value="#{finanzasBean.nuevaTransaccion.monto}" 
+                                       required="true" requiredMessage="El monto es requerido"
+                                       decimalSeparator="." thousandSeparator="," symbol="$" 
+                                       decimalPlaces="2"/>
+                        <p:message for="monto" />
+
+                        <p:outputLabel for="fecha" value="Fecha:" />
+                        <p:calendar id="fecha" value="#{finanzasBean.nuevaTransaccion.fecha}" 
+                                    pattern="dd/MM/yyyy" required="true" showOn="button" navigator="true"/>
+                        <p:message for="fecha" />
+
+                        <p:outputLabel for="descripcion" value="Descripción Detallada:" />
+                        <p:inputTextarea id="descripcion" value="#{finanzasBean.nuevaTransaccion.descripcion}" 
+                                         placeholder="Ej: Salario Octubre, Alquiler depto" 
+                                         rows="3" required="true" style="width:100%;"/>
+                        <p:message for="descripcion" />
+
+                        <f:facet name="footer">
+                            <h:panelGroup layout="block" style="grid-column: 1 / 4; text-align: right;">
+                                <p:commandButton value="Guardar Transacción" icon="pi pi-save" 
+                                                 action="#{finanzasBean.guardarTransaccion}" 
+                                                 update="finanzasForm:transaccionesTable finanzasForm:msgs finanzasForm:panelGridRegistro" 
+                                                 style="margin-top: 10px;"/>
+                            </h:panelGroup>
+                        </f:facet>
+                    </p:panelGrid>
+                </p:panel>
+
+                <p:panel header="Historial de Transacciones Registradas" style="margin-top:20px;">
+                    <p:dataTable id="transaccionesTable" var="t" value="#{finanzasBean.listaTransacciones}" 
+                                 rows="10" paginator="true" emptyMessage="No hay transacciones registradas.">
+
+                        <p:column headerText="Fecha" sortBy="#{t.fecha}" width="100">
+                            <h:outputText value="#{t.fecha}">
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        
+                        <p:column headerText="Tipo" sortBy="#{t.tipo}" width="80">
+                            <h:outputText value="#{t.tipo}" style="font-weight: bold; color: #{t.tipo eq 'INGRESO' ? 'green' : 'red'};" />
+                        </p:column>
+
+                        <p:column headerText="Descripción" sortBy="#{t.descripcion}">
+                            <h:outputText value="#{t.descripcion}" />
+                        </p:column>
+
+                        <p:column headerText="Monto" sortBy="#{t.monto}" width="120" style="text-align: right;">
+                            <h:outputText value="#{t.monto}">
+                                <f:convertNumber type="currency" currencySymbol="$" maxFractionDigits="2" />
+                            </h:outputText>
+                        </p:column>
+                        
+                        <p:column headerText="Acciones" width="60" style="text-align: center;">
+                            <p:commandButton icon="pi pi-trash" title="Eliminar" 
+                                             action="#{finanzasBean.eliminarTransaccion(t)}" 
+                                             update="finanzasForm:transaccionesTable finanzasForm:msgs" 
+                                             process="@this" />
+                        </p:column>
+
+                    </p:dataTable>
+                </p:panel>
+
+            </h:form>
+        </ui:define>
     </ui:composition>
 </html>

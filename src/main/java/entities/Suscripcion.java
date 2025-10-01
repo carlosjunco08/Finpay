@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package entities;
 
 import java.io.Serializable;
@@ -65,7 +61,10 @@ public class Suscripcion implements Serializable {
     @JoinColumn(name = "estado_suscripcion_id", referencedColumnName = "idestado_suscripcion")
     @ManyToOne(optional = false)
     private EstadoSuscripcion estadoSuscripcionId;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "suscripcionId")
+    
+    // 🚨 CAMBIO CRÍTICO APLICADO: 
+    // MappedBy ahora apunta al nombre del atributo en Transaccion.java: 'suscripcion'
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "suscripcion") 
     private Collection<Transaccion> transaccionCollection;
 
     public Suscripcion() {
@@ -162,5 +161,4 @@ public class Suscripcion implements Serializable {
     public String toString() {
         return "entities.Suscripcion[ idsuscripcion=" + idsuscripcion + " ]";
     }
-    
 }

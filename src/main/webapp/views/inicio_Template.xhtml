@@ -1,55 +1,57 @@
-<ui:composition template="./TemplateGeneral.xhtml"
-                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                xmlns:h="http://xmlns.jcp.org/jsf/html">
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
-    <ui:define name="content">
-        <div class="container">
-            
-            <!-- Tarjeta 1 -->
-            <div class="card">
-                <figure>
-                    <h:graphicImage library="images" name="images.jpeg"/>
-                </figure>
-                <div class="contenido">
-                    <h3>Control financiero</h3>
-                    <p>
-                        Accede a tu información financiera en cualquier momento con nuestra aplicación. 
-                        Todos tus ingresos y gastos estarán organizados en un solo lugar para tomar decisiones con confianza.
-                    </p>
-                    <a href="#" class="btn btn-primary">Leer más</a>
+    <ui:composition template="/views/TemplateGeneral.xhtml">
+    
+        <ui:define name="content">
+            <div class="container">
+                
+                <div class="card">
+                    <figure>
+                        <h:graphicImage library="images" name="images.jpeg"/>
+                    </figure>
+                    <div class="contenido">
+                        <h3>Control financiero</h3>
+                        <p>
+                            Accede a tu información financiera en cualquier momento con nuestra aplicación. 
+                            Todos tus ingresos y gastos estarán organizados en un solo lugar para tomar decisiones con confianza.
+                        </p>
+                        <a href="#" class="btn btn-primary">Leer más</a>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Tarjeta 2 -->
-            <div class="card">
-                <figure>
-                    <h:graphicImage library="images" name="descarga.jpeg"/>
-                </figure>
-                <div class="contenido">
-                    <h3>Tu progreso en metas</h3>
-                    <p>
-                        Supervisa tu progreso hacia las metas financieras que estableciste: ahorro, inversiones o pago de deudas. 
-                        Cada movimiento se actualiza automáticamente.
-                    </p>
-                    <a href="#" class="btn btn-primary">Leer más</a>
+                <div class="card">
+                    <figure>
+                        <h:graphicImage library="images" name="descarga.jpeg"/>
+                    </figure>
+                    <div class="contenido">
+                        <h3>Tu progreso en metas</h3>
+                        <p>
+                            Supervisa tu progreso hacia las metas financieras que estableciste: ahorro, inversiones o pago de deudas. 
+                            Cada movimiento se actualiza automáticamente.
+                        </p>
+                        <a href="#" class="btn btn-primary">Leer más</a>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Tarjeta 3 -->
-            <div class="card">
-                <figure>
-                    <h:graphicImage library="images" name="imp.jpeg"/>
-                </figure>
-                <div class="contenido">
-                    <h3>Información sobre impuestos</h3>
-                    <p>
-                        Próximamente tendrás acceso a artículos y herramientas para gestionar tus impuestos de manera sencilla.
-                    </p>
-                    <a href="#" class="btn btn-primary">Leer más</a>
+                <div class="card">
+                    <figure>
+                        <h:graphicImage library="images" name="imp.jpeg"/>
+                    </figure>
+                    <div class="contenido">
+                        <h3>Información sobre impuestos</h3>
+                        <p>
+                            Próximamente tendrás acceso a artículos y herramientas para gestionar tus impuestos de manera sencilla.
+                        </p>
+                        <a href="#" class="btn btn-primary">Leer más</a>
+                    </div>
                 </div>
+
             </div>
+        </ui:define>
 
-        </div>
-    </ui:define>
-
-</ui:composition>
+    </ui:composition>
+</html>

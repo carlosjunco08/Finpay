@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package entities;
 
 import java.io.Serializable;
@@ -46,7 +42,10 @@ public class MetodoDePago implements Serializable {
     @Size(min = 1, max = 60)
     @Column(name = "nombre_pago")
     private String nombrePago;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "metodoDePagoId")
+    
+    // 🚨 CAMBIO CRÍTICO APLICADO: 
+    // MappedBy ahora apunta al nombre del atributo en Transaccion.java: 'metodoDePago'
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "metodoDePago")
     private Collection<Transaccion> transaccionCollection;
 
     public MetodoDePago() {
@@ -110,5 +109,4 @@ public class MetodoDePago implements Serializable {
     public String toString() {
         return "entities.MetodoDePago[ idmetodoDePago=" + idmetodoDePago + " ]";
     }
-    
 }
