@@ -1,0 +1,46 @@
+/* ======== ESTILO MODERNO PARA DASHBOARD Y GRÁFICAS ======== */
+.graficContent {
+    display: flex;
+    flex-wrap: wrap; /* 🔹 Hace que se adapte en pantallas pequeñas */
+    gap: 20px;
+    border: none;
+    padding: 25px;
+    min-height: 100px;
+    background: #f9fafc;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease-in-out;
+}
+
+.graficContent:hover {
+    transform: translateY(-3px);
+}
+
+/* Tarjetas del dashboard */
+.dashboard-card {
+    flex: 1;
+    min-width: 100px;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+    margin-right: 0; /* 🔹 Eliminamos margin fijo, usamos gap */
+}
+
+.dashboard-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Título de tarjeta */
+.card-title p {
+    color: #017171;
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 12px;
+    border-bottom: 2px solid #e0f2f1;
+    padding-bottom: 6px;
+    letter-spacing: 0.5px;
+    text-align: center;
+}

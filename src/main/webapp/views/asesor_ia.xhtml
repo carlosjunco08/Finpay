@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="./TemplateGeneral.xhtml">
+        
+        <ui:define name="content">
+            
+            <h1>Asesor Financiero AI 🤖</h1>
+            <p>Pregúntale a FinPay AI sobre cualquier tema de finanzas personales, inversiones o gestión de deudas.</p>
+            
+            <h:form id="iaForm">
+                <p:messages id="globalMessages" showDetail="true" closable="true" />
+
+                <p:panel style="max-width: 800px; margin: 20px auto; padding: 20px; border-radius: 10px;" header="Tu Consulta">
+                    
+                    <p:inputTextarea value="#{iaBean.consultaUsuario}" 
+                                     rows="6" cols="80" 
+                                     placeholder="Ej: ¿Qué plan de ahorro me recomiendas según mi edad?" 
+                                     autoResize="false"
+                                     required="true" 
+                                     requiredMessage="Debes escribir una consulta para el Asesor AI."
+                                     style="width: 100%; margin-bottom: 10px;"/>
+                    
+                    <p:commandButton value="Consultar Asesor AI" 
+                                     action="#{iaBean.enviarConsulta}" 
+                                     update="iaForm:respuestaPanel iaForm:globalMessages" 
+                                     icon="pi pi-comments" 
+                                     style="font-size: 1.1em; padding: 10px 20px;"
+                                     disabled="#{iaBean.cargando}">
+                        <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+                    </p:commandButton>
+                </p:panel>
+
+                <p:panel id="respuestaPanel" header="Respuesta de FinPay AI" style="max-width: 800px; margin: 20px auto; background-color: #f7f9fc;">
+                    <p:outputPanel rendered="#{!iaBean.cargando}">
+                        <h:outputText value="#{iaBean.respuestaIA}" escape="false" style="white-space: pre-line;"/>
+                    </p:outputPanel>
+                    
+                </p:panel>
+                
+            </h:form>
+            
+            <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false" style="padding: 10px; border-radius: 8px;">
+                <h:outputText value="Consultando al Asesor AI, por favor espere..." style="vertical-align: middle; font-weight: bold;"/>
+                <i class="pi pi-spin pi-cog" style="font-size: 1.5rem; margin-left: 10px; color: #007bff;"></i>
+            </p:dialog>
+
+        </ui:define>
+    </ui:composition>
+</html>

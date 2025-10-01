@@ -1,0 +1,182 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="newLogin.css" library="css"/>
+        <title>Registro Usuario - Finpay</title>
+    </h:head>  
+
+    <h:body>
+        <!-- Header -->
+        <header class="header">
+            <h:graphicImage library="images" name="logoFynpay1.png" style="width:5%; height:5%;" />
+            <nav>
+                <ul class="navlinks">
+                    <li><a href="#">Quiénes Somos</a></li>
+                    <li><a href="#">Aplicación</a></li>
+                    <li><a href="#">Servicios</a></li>
+                    <li><a href="#">Contáctanos</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Contenido -->
+        <div class="container">
+            <div class="box">
+                <h:form id="registroForm" class="Formulario">
+                    <figure class="logo-login">
+                        <h:graphicImage library="images" name="logoFynpay1.1.png" styleClass="logo-img"/>
+                    </figure>
+                    <h2 class="titulo-login">Registro de Usuario</h2>
+
+                    <!-- Documento -->
+                    <div class="form-group">
+                        <h:inputText id="documento" value="#{usuariosController.user.identificacion}" 
+                                     required="true" styleClass="form-input"
+                                     requiredMessage="El campo Documento es obligatorio"/>
+                        <h:message for="documento" style="color:red"/>
+                        <label for="documento">Documento</label>
+                    </div>
+
+                    <!-- Nombres -->
+                    <div class="form-group">
+                        <h:inputText id="nombre" value="#{usuariosController.user.nombres}" 
+                                     required="true" styleClass="form-input"
+                                     requiredMessage="El campo Nombres es obligatorio"/>
+                        <h:message for="nombre" style="color:red"/>
+                        <label for="nombre">Nombres</label>
+                    </div>
+
+                    <!-- Apellidos -->
+                    <div class="form-group">
+                        <h:inputText id="apellidos" value="#{usuariosController.user.apellidos}" 
+                                     required="true" styleClass="form-input"
+                                     requiredMessage="El campo Apellidos es obligatorio"/>
+                        <h:message for="apellidos" style="color:red"/>
+                        <label for="apellidos">Apellidos</label>
+                    </div>
+
+                    <!-- Nombre de usuario -->
+                    <div class="form-group">
+                        <h:inputText id="nombreUser" value="#{usuariosController.user.nombreUsuario}" 
+                                     required="true" styleClass="form-input"
+                                     requiredMessage="El campo Nombre de Usuario es obligatorio"/>
+                        <h:message for="nombreUser" style="color:red"/>
+                        <label for="nombreUser">Nombre de Usuario</label>
+                    </div>
+
+                    <!-- Correo -->
+                    <div class="form-group">
+                        <h:inputText id="email" value="#{usuariosController.user.correo}" 
+                                     required="true" styleClass="form-input"
+                                     requiredMessage="El campo Correo es obligatorio"/>
+                        <h:message for="email" style="color:red"/>
+                        <label for="email">Correo electrónico</label>
+                    </div>
+
+                    <!-- Teléfono -->
+                    <div class="form-group">
+                        <h:inputText id="telefono" value="#{usuariosController.user.telefono}" 
+                                     required="true" styleClass="form-input"
+                                     requiredMessage="El campo Teléfono es obligatorio"/>
+                        <h:message for="telefono" style="color:red"/>
+                        <label for="telefono">Teléfono</label>
+                    </div>
+
+                    <!-- Dirección -->
+                    <div class="form-group">
+                        <h:inputText id="direccion" value="#{usuariosController.user.direccion}" 
+                                     required="true" styleClass="form-input"
+                                     requiredMessage="El campo Dirección es obligatorio"/>
+                        <h:message for="direccion" style="color:red"/>
+                        <label for="direccion">Dirección</label>
+                    </div>
+
+                    <!-- Contrasena -->
+                    <div class="form-group">
+                        <h:inputSecret id="password" value="#{usuariosController.user.contrasena}" 
+                                       required="true" styleClass="form-input"
+                                       requiredMessage="El campo Contrasena es obligatorio"/>
+                        <h:message for="password" style="color:red"/>
+                        <label for="password">Contrasena</label>
+                    </div>
+
+                    <!-- Edad -->
+                    <div class="form-group">
+                        <h:inputText id="edad" value="#{usuariosController.user.edad}" 
+                                     required="true" styleClass="form-input"
+                                     requiredMessage="El campo Edad es obligatorio"/>
+                        <h:message for="edad" style="color:red"/>
+                        <label for="edad">Edad</label>
+                    </div>
+
+                    <!-- País -->
+                    <div class="form-group">
+                        <h:selectOneMenu id="pais" value="#{usuariosController.user.paisId.idpais}" 
+                                         required="true" styleClass="form-input"
+                                         requiredMessage="Debe seleccionar un país">
+                            <f:selectItems value="#{usuariosController.listarPaises()}" />
+                        </h:selectOneMenu>
+                        <h:message for="pais" style="color:red"/>
+                        <label for="pais">País</label>
+                    </div>
+
+                    <h:commandButton value="Registrarse" action="#{usuariosController.crearUsuario()}" 
+                                     styleClass="btn-primary" id="btnRegistrar"/>
+                </h:form>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="foot">
+            <section class="sec">
+                <ul class="navlink">
+                    <label class="List">Recursos</label><br/><br/>
+                    <li><a href="#">Consejos sobre cómo ahorrar</a></li>
+                    <li><a href="#">Artículos e información sobre el mercado</a></li>
+                    <li><a href="#">Consejos sobre finanzas</a></li>
+                    <li><a href="404.xhtml">¿Por qué Basic Finance?</a></li>
+                </ul>
+
+                <ul class="navlink">
+                    <label class="List">Empresa</label><br/><br/>
+                    <li><a href="#">Nuestra historia</a></li>
+                    <li><a href="#">Accesibilidad</a></li>
+                    <li><a href="#">Eventos</a></li>
+                    <li><a href="#">Desarrolladores</a></li>
+                </ul>
+
+                <ul class="navlink">
+                    <label class="List">Ayuda</label><br/><br/>
+                    <li><a href="#">Convenios</a></li>
+                    <li><a href="#">Centro de ayuda</a></li>
+                </ul>
+
+                <ul class="navlink">
+                    <label class="List">Redes</label><br/><br/>
+                    <li>
+                        <h:graphicImage library="images" name="Face.svg" alt="Facebook" class="face"/>
+                        <a href="https://web.facebook.com/">Facebook</a>
+                    </li>
+                    <li>
+                        <h:graphicImage library="images" name="inst.svg" alt="Instagram" class="Inst"/>
+                        <a href="https://www.instagram.com/">Instagram</a>
+                    </li>
+                    <li>
+                        <h:graphicImage library="images" name="X.svg" alt="X" class="twt"/>
+                        <a href="https://x.com/">X</a>
+                    </li>
+                    <li>
+                        <h:graphicImage library="images" name="what.svg" alt="Whatsapp" class="what"/>
+                        <a href="https://www.whatsapp.com/?lang=es_LA">Whatsapp</a>
+                    </li>
+                </ul>
+            </section>
+        </footer>
+    </h:body>
+</html>
+

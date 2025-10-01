@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="./admin_Template.xhtml">
+
+    <ui:define name="content">
+
+        <!-- Estilos mejorados -->
+        <style>
+            .correo-container {
+                width: 95%;
+                max-width: 1000px;
+                margin: 40px auto;
+                padding: 50px 40px;
+                background-color: #ffffff;
+                border-radius: 14px;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+                color: #212529;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                box-sizing: border-box;
+            }
+
+            .correo-container h2 {
+                text-align: center;
+                color: #004080;
+                font-size: 34px;
+                font-weight: 700;
+                margin-bottom: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 12px;
+            }
+
+            .correo-container h2 img {
+                width: 42px;
+                height: 42px;
+            }
+
+            .form-group {
+                margin-bottom: 25px;
+            }
+
+            .form-group label {
+                display: block;
+                font-weight: 700;
+                margin-bottom: 10px;
+                color: #212529;
+                font-size: 18px;
+            }
+
+            /* Inputs adaptados al contenedor */
+            .form-input {
+                width: 100%; 
+                padding: 20px;
+                border-radius: 12px;
+                border: 1px solid #ced4da;
+                background-color: #ffffff;
+                color: #212529;
+                font-size: 18px;
+                transition: all 0.3s ease;
+                box-sizing: border-box;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+                display: block;
+            }
+
+            .form-input:focus {
+                border-color: #004080;
+                box-shadow: 0 0 10px rgba(0,64,128,0.25);
+                outline: none;
+            }
+
+            .form-textarea {
+                resize: vertical;
+                min-height: 300px; /* grande y cómodo */
+            }
+
+            /* Botón con ícono Gmail */
+            .btn-correo {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                width: 100%;
+                padding: 20px;
+                font-size: 20px;
+                font-weight: 700;
+                text-align: center;
+                border: none;
+                border-radius: 12px;
+                cursor: pointer;
+                background: linear-gradient(135deg,#DB4437,#C1351D);
+                color: #fff;
+                transition: all 0.3s ease;
+                box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+            }
+
+            .btn-correo:hover {
+                background: linear-gradient(135deg,#C1351D,#DB4437);
+                transform: translateY(-2px);
+                box-shadow: 0 8px 22px rgba(0,0,0,0.25);
+            }
+
+            .btn-correo img {
+                width: 28px;
+                height: 28px;
+            }
+
+            /* Responsivo */
+            @media (max-width: 768px) {
+                .correo-container {
+                    padding: 35px 20px;
+                }
+
+                .correo-container h2 {
+                    font-size: 26px;
+                }
+
+                .correo-container h2 img {
+                    width: 32px;
+                    height: 32px;
+                }
+
+                .form-input {
+                    font-size: 16px;
+                    padding: 16px;
+                }
+
+                .btn-correo {
+                    font-size: 18px;
+                    padding: 16px;
+                }
+
+                .btn-correo img {
+                    width: 24px;
+                    height: 24px;
+                }
+            }
+        </style>
+
+        <div class="correo-container">
+            <h2>
+                <img src="https://www.gstatic.com/images/branding/product/2x/gmail_2020q4_48dp.png" alt="Gmail"/>
+                @Correos Masivos
+            </h2>
+            <h:form>
+                <div class="form-group">
+                    <label for="asunto">Asunto</label>
+                    <h:inputText id="asunto" value="#{correoBean.asunto}" 
+                                 required="true"
+                                 styleClass="form-input"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="mensaje">Mensaje</label>
+                    <h:inputTextarea id="mensaje" value="#{correoBean.mensaje}" 
+                                     required="true"
+                                     styleClass="form-input form-textarea"/>
+                </div>
+
+                <h:commandButton value="Enviar Correos"
+                                 action="#{correoBean.enviarCorreos}"
+                                 styleClass="btn-correo">
+                    <f:facet name="image">
+                        <img src="https://www.gstatic.com/images/branding/product/2x/gmail_2020q4_48dp.png" alt="Gmail"/>
+                    </f:facet>
+                </h:commandButton>
+            </h:form>
+        </div>
+
+    </ui:define>
+
+</ui:composition>

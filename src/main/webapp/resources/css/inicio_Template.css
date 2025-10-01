@@ -1,0 +1,302 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+/* ================= GENERAL ================= */
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5f7fa;
+    height: 100%;
+    line-height: 1.5;
+}
+
+/* ================= HEADER ================= */
+#top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    flex-wrap: wrap;
+}
+
+#top figure {
+    width: 90px;
+    height: 60px;
+}
+
+#top figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+#top a {
+    margin: 0 0.5rem;
+    text-decoration: none;
+    font-weight: 500;
+    color: #333;
+    transition: color 0.3s;
+}
+
+#top a:hover {
+    color: #007bff;
+}
+
+#top .btn {
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 6px;
+    padding: 5px 15px;
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#top .btn:hover {
+    background-color: #0056b3;
+}
+
+/* ================= SIDEBAR ================= */
+.layout-wrapper {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+#left {
+    width: 18%;
+    background: linear-gradient(to bottom, #007bff, #0056b3);
+    color: #fff;
+}
+
+.sidebar-logo {
+    padding: 1rem;
+    text-align: center;
+}
+
+.sidebar-logo figure img {
+    width: 120px;
+    height: auto;
+    margin-bottom: 0.5rem;
+}
+
+.sidebar-logo a {
+    display: block;
+    color: #efb810;
+    font-weight: 600;
+    margin-top: 0.5rem;
+}
+
+.sidebar-nav {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar-header {
+    padding: 1rem 1.5rem;
+    color: #efb810;
+    font-weight: 600;
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    padding: 0.6rem 1.5rem;
+    color: #fff;
+    font-weight: 500;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s;
+}
+
+.sidebar-link:hover {
+    color: #efb810;
+}
+
+.sidebar-link[data-bs-toggle="collapse"]::after {
+    content: "";
+    position: absolute;
+    right: 1.5rem;
+    border: solid;
+    border-width: 0 2px 2px 0;
+    padding: 3px;
+    transform: rotate(-135deg);
+    transition: transform 0.3s;
+}
+
+.sidebar-link[data-bs-toggle="collapse"].collapsed::after {
+    transform: rotate(45deg);
+}
+
+.sidebar-dropdown {
+    list-style: none;
+    padding-left: 0;
+}
+
+/* ================= CONTENIDO ================= */
+.left_content {
+    flex-grow: 1;
+    padding: 2rem;
+    background-color: #f3f3f3;
+    overflow-y: auto;
+}
+
+/* Contenedor de tarjetas */
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    width: 100%;
+}
+
+/* Tarjetas */
+.card {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.card figure img {
+    width: 100%;
+    border-radius: 15px 15px 0 0;
+    object-fit: cover;
+}
+
+.card .contenido {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.card .contenido h3 {
+    margin-bottom: 1rem;
+    color: #007bff;
+}
+
+.card .contenido p {
+    flex-grow: 1;
+    color: #555;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.card .contenido .btn-primary {
+    align-self: flex-start;
+    background-color: #007bff;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    color: #fff;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.card .contenido .btn-primary:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* ================= FOOTER ================= */
+#bottom {
+    display: flex;
+    background: #222;
+    padding: 2rem;
+    color: #fff;
+}
+
+.foot {
+    width: 100%;
+}
+
+.foot .sec {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.foot .navlink {
+    list-style: none;
+    padding: 0;
+}
+
+.foot .navlink li {
+    margin-bottom: 0.8rem;
+}
+
+.foot .navlink li a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.foot .navlink li a:hover {
+    color: #efb810;
+}
+
+.foot .Lista {
+    font-weight: 700;
+    color: #efb810;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+/* Redes sociales */
+.foot .navlink img {
+    width: 24px;
+    height: 24px;
+    margin-right: 0.5rem;
+    transition: transform 0.3s, filter 0.3s;
+}
+
+.foot .navlink img:hover {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+    #top {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    #top a {
+        margin: 5px 0;
+    }
+
+    .container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    #left {
+        width: 100%;
+        height: auto;
+    }
+
+    .foot .sec {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+}

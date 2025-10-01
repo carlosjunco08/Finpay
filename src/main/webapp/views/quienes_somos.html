@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<ui:composition template="/publi_template.xhtml">
+    <ui:define name="content">
+        <div class="container mt-4">
+            <h2 class="text-center">Quiénes Somos</h2>
+
+            <p class="mt-3 text-justify">
+                Somos <strong>Finpay</strong>, una plataforma que ayuda en la gestión de parqueaderos,
+                gasolineras y talleres mecánicos con información clara y herramientas prácticas.
+            </p>
+
+            <div class="row mt-4">
+                <div class="col-md-4 text-center">
+                    <h:graphicImage library="images" name="mision.png" alt="Misión" style="width:80px"/>
+                    <h4>Misión</h4>
+                    <p>Brindar herramientas confiables para optimizar tiempo y costos.</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <h:graphicImage library="images" name="vision.png" alt="Visión" style="width:80px"/>
+                    <h4>Visión</h4>
+                    <p>Ser la referencia regional en soluciones para movilidad y servicios automotrices.</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <h:graphicImage library="images" name="valores.png" alt="Valores" style="width:80px"/>
+                    <h4>Valores</h4>
+                    <p>Compromiso, seguridad e innovación.</p>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>
+</html>

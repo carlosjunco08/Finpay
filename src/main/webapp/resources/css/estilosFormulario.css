@@ -1,0 +1,101 @@
+/* ======== ESTILO MODERNO PARA FORMULARIOS FINANCIEROS ======== */
+.finance-form {
+    width: 65%;
+    margin: 30px auto;
+    padding: 30px;
+    border-radius: 16px;
+    background: #ffffff;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    transition: all 0.3s ease-in-out;
+}
+
+.finance-form:hover {
+    transform: translateY(-3px);
+}
+
+/* Encabezados */
+.finance-form h1, 
+.finance-form h2, 
+.finance-form h3 {
+    text-align: center;
+    color: #036fab;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+/* Campos de entrada */
+.input-field {
+    width: 100%;
+    padding: 12px 14px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-size: 15px;
+    transition: all 0.3s ease-in-out;
+}
+
+.input-field:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 8px rgba(0,123,255,0.3);
+}
+
+/* Botón de envío */
+.submit-button {
+    display: block;
+    width: 100%;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    letter-spacing: 0.5px;
+}
+
+.submit-button:hover {
+    background: linear-gradient(135deg, #0056b3, #004494);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Mensajes */
+.ui-messages {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.ui-messages-info, 
+.ui-messages-error, 
+.ui-messages-warn {
+    padding: 12px 15px;
+    margin-bottom: 12px;
+    border-radius: 10px;
+    font-weight: 500;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+/* Colores modernos para mensajes */
+.ui-messages-info {
+    background-color: #e6f4ea;
+    color: #1e4620;
+    border-left: 5px solid #34a853;
+}
+
+.ui-messages-error {
+    background-color: #fdecea;
+    color: #b71c1c;
+    border-left: 5px solid #e53935;
+}
+
+.ui-messages-warn {
+    background-color: #fff8e1;
+    color: #795548;
+    border-left: 5px solid #ff9800;
+}

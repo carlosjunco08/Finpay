@@ -1,0 +1,171 @@
+/* ===== RESETEO ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  font-family: Arial, sans-serif;
+  height: 100%;
+  background: #f4f6f9;
+  color: #333;
+}
+
+/* ===== HEADER ===== */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(rgb(0, 139, 139), #000d);
+  padding: 1rem 3rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navlinks {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.navlinks li a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.navlinks li a:hover {
+  color: #efb810;
+}
+
+/* ===== CONTENIDO PRINCIPAL ===== */
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 1rem;
+}
+
+.form-card {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 600px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  animation: fadeIn 0.8s ease;
+}
+
+.form-card h2 {
+  text-align: center;
+  color: #007bff;
+  margin-bottom: 1.5rem;
+}
+
+.formulario .mb-3 {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.2rem;
+}
+
+.formulario label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.form-control, .form-select {
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 6px rgba(0,123,255,0.3);
+  outline: none;
+}
+
+.btn {
+  display: inline-block;
+  background: #007bff;
+  color: #fff;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.btn:hover {
+  background: #0056b3;
+  transform: translateY(-2px);
+}
+
+/* ===== FOOTER ===== */
+.foot {
+  background: #00474f;
+  padding: 3rem 2rem;
+  color: #fff;
+  margin-top: 3rem;
+}
+
+.sec {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.navlink {
+  list-style: none;
+  flex: 1 1 180px;
+}
+
+.navlink label {
+  font-weight: bold;
+  color: #efb810;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.navlink li {
+  margin-bottom: 0.6rem;
+}
+
+.navlink a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.navlink a:hover {
+  color: #efb810;
+}
+
+.social li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.social img {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s;
+}
+
+.social img:hover {
+  transform: scale(1.2);
+}
+
+/* ===== ANIMACIONES ===== */
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(20px);}
+  to {opacity: 1; transform: translateY(0);}
+}

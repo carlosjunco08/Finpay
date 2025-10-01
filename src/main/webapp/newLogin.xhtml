@@ -1,0 +1,137 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="#{request.contextPath}/resources/css/newLogin.css" />
+    <h:outputStylesheet name="newLogin.css" library="css"/>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <h:outputScript name="validarForms.js" library="js" target="body" />
+    <title>Login - Finpay</title>
+</h:head>
+
+<h:body>
+    <!-- Encabezado -->
+    <header class="header">
+        <h:graphicImage library="images" name="logoFynpay1.png" style="width:5%; height:5%;"/>
+        <nav>
+            <ul class="navlinks">
+                <li><a href="#">Quiénes Somos</a></li>
+                <li><a href="./aplicacion.xhtml">Aplicación</a></li>
+                <li><a href="#{request.contextPath}./servicios">Servicios</a></li>
+                <li><a href="#">Contáctanos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Contenido -->
+    <div class="container">
+        <div class="card quienes-somos">
+            <figure>
+                <h:graphicImage library="images" name="logoFynpay1.1.png" styleClass="logo-img" />
+            </figure>
+            <h3>Quiénes Somos</h3>
+            <div class="contenido">
+                <p>En Finpay guiamos a las personas en la gestión de sus finanzas personales.</p>
+
+                <p>Además, en Finpay creemos firmemente en la educación financiera como la clave para tomar decisiones informadas y responsables. Por eso, ofrecemos consejos prácticos, análisis personalizados y alertas inteligentes que te acompañan en cada paso hacia una vida económica más estable, segura y completamente consciente.</p>
+                <p>¡Tu bienestar financiero es nuestra prioridad!</p>
+            </div>
+        </div>
+
+        <!-- Formulario de login -->
+        <div class="box">
+            <h:form id="Formulario" class="Formulario">
+                <figure class="logo-login">
+                    <h:graphicImage library="images" name="logoFynpay1.1.png" styleClass="logo-img"/>
+                </figure>
+                <h2 class="titulo-login">Inicia sesión en Finpay</h2>
+
+                <!-- Mensajes globales -->
+                <h:messages id="msgs" globalOnly="true"
+                            style="color:red; font-weight:bold; margin-bottom:10px;" />
+
+                <!-- Usuario -->
+                <div class="form-group">
+                    <h:inputText id="iTextUsuario" value="#{login.nombreUsuario}"
+                                 required="true" styleClass="form-input"
+                                 requiredMessage="El campo usuario es obligatorio"/>
+                    <h:message for="iTextUsuario" style="color:red" />
+                    <label for="iTextUsuario">Nombre de Usuario</label>
+                </div>
+
+                <!-- Contrasena -->
+                <div class="form-group">
+                    <h:inputSecret id="iTextPassword" value="#{login.contrasena}"
+                                   required="true" styleClass="form-input"
+                                   requiredMessage="El campo contrasena es obligatorio"/>
+                    <h:message for="iTextPassword" style="color:red" />
+                    <label for="iTextPassword">Contrasena</label>
+                </div>
+
+                <!-- Botón: llamar al método sin paréntesis -->
+                <h:commandButton value="Ingresar" action="#{login.iniciarSesion}"
+                                 styleClass="btn-primary" />
+
+                <div class="login-links">
+                    <a href="#">¿Olvidó su contraseña?</a>
+                    <a href="registro.xhtml">Registrarme</a>
+                </div>
+            </h:form>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="foot">
+        <section class="sec">
+            <div class="column">
+                <h4>Recursos</h4>
+                <ul class="navlink">
+                    <li><a href="#">Consejos sobre cómo ahorrar</a></li>
+                    <li><a href="#">Artículos e información sobre el mercado</a></li>
+                    <li><a href="#">Consejos sobre finanzas</a></li>
+                    <li><a href="404.xhtml">¿Por qué Basic Finance?</a></li>
+                </ul>
+            </div>
+            <div class="column">
+                <h4>Empresa</h4>
+                <ul class="navlink">
+                    <li><a href="#">Nuestra historia</a></li>
+                    <li><a href="#">Accesibilidad</a></li>
+                    <li><a href="#">Eventos</a></li>
+                    <li><a href="#">Desarrolladores</a></li>
+                </ul>
+            </div>
+            <div class="column">
+                <h4>Ayuda</h4>
+                <ul class="navlink">
+                    <li><a href="#">Convenios</a></li>
+                    <li><a href="#">Centro de ayuda</a></li>
+                </ul>
+            </div>
+            <div class="column">
+                <h4>Síguenos</h4>
+                <div class="social-links">
+                    <a href="https://web.facebook.com/">
+                        <h:graphicImage library="images" name="Face.svg" alt="Facebook" style="width:24px;"/>
+                    </a>
+                    <a href="https://www.instagram.com/">
+                        <h:graphicImage library="images" name="inst.svg" alt="Instagram" style="width:24px;"/>
+                    </a>
+                    <a href="https://x.com/">
+                        <h:graphicImage library="images" name="X.svg" alt="X" style="width:24px;"/>
+                    </a>
+                    <a href="https://www.whatsapp.com/?lang=es_LA">
+                        <h:graphicImage library="images" name="what.svg" alt="Whatsapp" style="width:24px;"/>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </footer>
+</h:body>
+</html>

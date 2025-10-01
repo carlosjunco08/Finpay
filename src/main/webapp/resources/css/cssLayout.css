@@ -1,0 +1,105 @@
+/* ======== ESTILO MODERNO PARA TEMPLATE A ======== */
+.templateA {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: #007bff;
+    line-height: 1.6;
+}
+
+/* Header */
+.templateA #top {
+    position: relative;
+    background: #007bff;
+    color: #fff;
+    padding: 15px 20px;
+    margin: 0 0 15px 0;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.templateA #top a:link,
+.templateA #top a:visited {
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.templateA #top a:hover,
+.templateA #top a:visited:hover {
+    color: #007bff;
+    text-decoration: underline;
+}
+
+/* ======== FOOTER ======== */
+.foot {
+  background: #222;
+  color: #fff;
+  padding: 2rem 2rem;
+  margin-top: 50px;
+}
+
+.foot .sec {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.foot .column {
+  flex: 1;
+  padding: 0 1rem;
+  min-width: 10px;
+  border-right: 1px solid #444;
+}
+
+.foot .column:last-child {
+  border-right: none;
+}
+
+.foot h4 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: #007bff;
+}
+
+.navlink {
+  list-style: none;
+  padding: 0;
+}
+
+.navlink li {
+  margin-bottom: 0.8rem;
+}
+
+.navlink li a {
+  text-decoration: none;
+  color: #007bff;
+  transition: color 0.3s;
+}
+
+.navlink li a:hover {
+  color: #007bff;
+}
+
+/* ======== REDES SOCIALES ======== */
+.social-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.social-links a {
+  color: #ccc;
+  font-size: 1.4rem;
+  transition: color 0.3s, transform 0.2s;
+}
+
+.social-links a:hover {
+  color: #007bff;
+  transform: scale(1.2);
+}
+
+.letra{
+    color: gray;
+}
