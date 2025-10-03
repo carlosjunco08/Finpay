@@ -18,7 +18,7 @@ public class CorreoBean {
 
     public String enviarCorreos() {
         try {
-            URL url = new URL("http://localhost:5000/enviar-correos");
+            URL url = new URL("http://localhost:8081/enviar-correos");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("POST");
             conn.setRequestProperty("Content-Type", "application/json; utf-8");
