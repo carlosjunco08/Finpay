@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Jhon Deibys Torres
+ * @author finpay
  */
 public class Filtro implements Filter {
 

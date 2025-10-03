@@ -11,7 +11,7 @@ import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author Jhon Deibys Torres
+ * @author finpay
  */
 @Stateless
 public class PeriodoFacade extends AbstractFacade<Periodo> implements PeriodoFacadeLocal {

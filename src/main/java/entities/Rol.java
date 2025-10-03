@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Jhon Deibys Torres
+ * @author finpay
  */
 @Entity
 @Table(name = "rol")

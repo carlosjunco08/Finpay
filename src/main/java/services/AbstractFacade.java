@@ -9,7 +9,7 @@ import javax.persistence.EntityManager;
 
 /**
  *
- * @author Jhon Deibys Torres
+ * @author finpay
  */
 public abstract class AbstractFacade<T> {
 

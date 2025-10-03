@@ -13,44 +13,60 @@ body {
     font-family: 'Poppins', sans-serif;
     background-color: #f5f7fa;
     height: 100%;
-    line-height: 1.5;
+    line-height: 1.5; 
 }
 
 /* ================= HEADER ================= */
 #top {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; 
     align-items: center;
     padding: 0.5rem 1rem;
-    background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    flex-wrap: wrap;
+    /* COLOR AZUL CLARO */
+    background-color: #87CEEB; 
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1); 
 }
 
-#top figure {
+/* Contenedores internos para alinear los elementos dentro */
+.navbar-left, 
+.navbar-center, 
+.navbar-right {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap; 
+}
+
+/* Estilo para el logo */
+#top .logo-img {
     width: 90px;
     height: 60px;
-}
-
-#top figure img {
-    width: 100%;
-    height: 100%;
     object-fit: contain;
 }
 
+/* Ajuste para los enlaces - Margen de 2rem */
 #top a {
-    margin: 0 0.5rem;
+    margin: 0 2rem; 
     text-decoration: none;
     font-weight: 500;
     color: #333;
     transition: color 0.3s;
+    white-space: nowrap; 
 }
 
 #top a:hover {
     color: #007bff;
 }
 
-#top .btn {
+/* Estilo general para el botón de menú */
+#top .btn-menu {
+    background-color: transparent; 
+    color: #007bff; 
+    font-size: 1.5rem;
+    padding: 5px 10px;
+}
+
+/* Estilo para el botón de Cerrar Sesión (btn-primary) */
+#top .btn-primary {
     background-color: #007bff;
     color: #fff;
     border-radius: 6px;
@@ -61,7 +77,7 @@ body {
     transition: background 0.3s;
 }
 
-#top .btn:hover {
+#top .btn-primary:hover {
     background-color: #0056b3;
 }
 
@@ -69,13 +85,14 @@ body {
 .layout-wrapper {
     display: flex;
     width: 100%;
-    height: 100%;
+    min-height: calc(100vh - 70px);
 }
 
 #left {
     width: 18%;
     background: linear-gradient(to bottom, #007bff, #0056b3);
     color: #fff;
+    height: auto; 
 }
 
 .sidebar-logo {
@@ -105,6 +122,10 @@ body {
     padding: 1rem 1.5rem;
     color: #efb810;
     font-weight: 600;
+}
+
+.sidebar-item a {
+    text-decoration: none; 
 }
 
 .sidebar-link {
@@ -218,9 +239,9 @@ body {
 /* ================= FOOTER ================= */
 #bottom {
     display: flex;
-    background: #222;
+    background: #87CEEB; 
     padding: 2rem;
-    color: #fff;
+    color: #333; 
 }
 
 .foot {
@@ -229,9 +250,15 @@ body {
 
 .foot .sec {
     display: flex;
+    /* CENTRADO Y ESPACIO LATERAL: ancho 80% y margin auto */
+    width: 80%; 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 2rem;
+    gap: 1rem; 
+    line-height: 1.1; 
 }
 
 .foot .navlink {
@@ -239,25 +266,32 @@ body {
     padding: 0;
 }
 
+/* Espacio vertical interno ajustado y alineación a la izquierda */
 .foot .navlink li {
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.5rem; 
+    text-align: left; 
 }
 
 .foot .navlink li a {
-    color: #ccc;
+    color: #333; 
     text-decoration: none;
     transition: color 0.3s;
+    padding: 2px 0;
+    display: inline-block;
 }
 
 .foot .navlink li a:hover {
-    color: #efb810;
+    color: #007bff; 
 }
 
 .foot .Lista {
     font-weight: 700;
-    color: #efb810;
+    color: #0056b3; 
     display: block;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem; 
+    line-height: normal; 
+    /* Alineación del título a la izquierda */
+    text-align: left;
 }
 
 /* Redes sociales */
@@ -265,6 +299,7 @@ body {
     width: 24px;
     height: 24px;
     margin-right: 0.5rem;
+    vertical-align: middle; 
     transition: transform 0.3s, filter 0.3s;
 }
 
@@ -274,15 +309,59 @@ body {
 }
 
 /* ================= RESPONSIVE ================= */
+@media (max-width: 992px) {
+    /* En pantallas medianas, la navegación puede ser vertical o centrarse */
+    #top {
+        flex-wrap: wrap; 
+        gap: 0.5rem;
+        padding-bottom: 1rem;
+    }
+    
+    .navbar-center {
+        width: 100%; 
+        justify-content: center;
+        order: 3; 
+    }
+
+    .navbar-left {
+        order: 1;
+    }
+    
+    .navbar-right {
+        order: 2;
+    }
+    
+    .foot .sec {
+        width: 95%; /* Permite que ocupe más espacio en tabletas */
+    }
+}
+
 @media (max-width: 768px) {
     #top {
         flex-direction: column;
-        align-items: center;
-        gap: 0.5rem;
+        align-items: flex-start;
     }
 
-    #top a {
+    .navbar-left {
+        width: 100%;
+        justify-content: space-between; 
+        margin-bottom: 0.5rem;
+    }
+    
+    .navbar-center {
+        flex-direction: column; 
+        align-items: flex-start;
+        width: 100%;
+    }
+    
+    .navbar-center a {
         margin: 5px 0;
+    }
+
+    .navbar-right {
+        width: 100%;
+        justify-content: center;
+        margin-top: 0.5rem;
     }
 
     .container {
@@ -298,5 +377,12 @@ body {
     .foot .sec {
         flex-direction: column;
         gap: 1.5rem;
+        width: 100%; 
+        margin: 0; 
+    }
+    
+    .foot .navlink,
+    .foot .Lista {
+        text-align: left;
     }
 }

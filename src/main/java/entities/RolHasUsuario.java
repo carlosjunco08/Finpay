@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Jhon Deibys Torres
+ * @author finpay
  */
 @Entity
 @Table(name = "rol_has_usuario")

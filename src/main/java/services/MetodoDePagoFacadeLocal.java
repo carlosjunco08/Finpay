@@ -10,7 +10,7 @@ import javax.ejb.Local;
 
 /**
  *
- * @author Jhon Deibys Torres
+ * @author finpay
  */
 @Local
 public interface MetodoDePagoFacadeLocal {

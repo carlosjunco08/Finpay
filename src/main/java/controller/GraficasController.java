@@ -18,7 +18,7 @@ import services.UsuarioFacadeLocal;
 
 /**
  *
- * @author Jhon Deibys Torres
+ * @author finpay
  */
 @Named(value = "graficasController")
 @ViewScoped
